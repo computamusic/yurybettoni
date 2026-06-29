@@ -1,26 +1,129 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Manual + system dark mode: the no-FOUC script sets data-theme on <html>. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ───────────────────────────────────────────────────────────
+   Yury Bettoni — elevated evolution of the original site.
+   Original DNA kept: light/editorial canvas · Montserrat + Lora
+   · black-and-white core · the YB chevron (velocity) motif.
+   ─────────────────────────────────────────────────────────── */
+@theme {
+  /* Theme-flipping surfaces + text (see [data-theme="dark"] overrides) */
+  --color-bone: #f6f2ea;          /* page ground */
+  --color-bone-deep: #ece5d8;     /* raised surfaces */
+  --color-ink: #17150f;           /* primary text / dark buttons */
+  --color-ink-soft: #3b362c;      /* secondary text */
+  --color-mute: #847c6d;          /* tertiary text */
+  --color-line: rgba(23, 21, 15, 0.14);
+  --color-line-soft: rgba(23, 21, 15, 0.08);
+
+  /* Always-fixed tones (do NOT flip with theme) */
+  --color-light: #f3eee4;         /* light text/elements on dark sections + media */
+  --color-night: #17150f;         /* feature dark sections */
+  --color-night-soft: #221f17;
+
+  /* Warm accent — used sparingly (clay courts + the archive) */
+  --color-clay: #a8552f;
+  --color-clay-deep: #87401f;
+
+  /* Typography — the original two faces, elevated */
+  --font-display: var(--font-lora), ui-serif, Georgia, serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+
+  /* Fluid type scale */
+  --text-hero: clamp(2.6rem, 6.4vw, 6rem);
+  --text-display: clamp(2rem, 4.4vw, 3.75rem);
+  --text-heading: clamp(1.4rem, 2.4vw, 2.1rem);
+
+  /* Motion easing */
+  --ease-out-line: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-line: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --max-content: 82rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Dark mode — flip the surface + text tokens. Fixed tones stay put. */
+[data-theme="dark"] {
+  --color-bone: #17120b;
+  --color-bone-deep: #221c12;
+  --color-ink: #f1eadd;
+  --color-ink-soft: #c9c0b1;
+  --color-mute: #8c8475;
+  --color-line: rgba(243, 238, 228, 0.14);
+  --color-line-soft: rgba(243, 238, 228, 0.07);
+  --color-night: #0d0a06;     /* feature sections sit darkest */
+  --color-night-soft: #15110b;
+  --color-clay: #c06a3e;       /* a touch brighter on dark */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base ─────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bone);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+::selection {
+  background: var(--color-ink);
+  color: var(--color-bone);
+}
+:focus-visible {
+  outline: 2px solid var(--color-clay);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.hairline { height: 1px; background: var(--color-line); }
+
+.underline-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s var(--ease-out-line);
+}
+.underline-draw:hover { background-size: 100% 1px; }
+
+/* The chevron motif — velocity / "move forward" (from the YB monogram). */
+.chev { display: inline-flex; gap: 2px; align-items: center; }
+.chev > span {
+  width: 7px;
+  height: 14px;
+  background: currentColor;
+  clip-path: polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 45% 50%);
+  transition: transform 0.4s var(--ease-out-line), opacity 0.4s var(--ease-out-line);
+}
+.chev > span:nth-child(1) { opacity: 0.35; }
+.chev > span:nth-child(2) { opacity: 0.65; }
+.group:hover .chev > span,
+.chev-host:hover .chev > span { transform: translateX(3px); }
+.group:hover .chev > span:nth-child(1),
+.chev-host:hover .chev > span:nth-child(1) { opacity: 0.6; }
+.group:hover .chev > span:nth-child(2),
+.chev-host:hover .chev > span:nth-child(2) { opacity: 0.85; }
+
+/* One warm, curated grade so archival + modern feel cohesive */
+.graded { filter: saturate(0.92) contrast(1.03) brightness(1.01); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }
