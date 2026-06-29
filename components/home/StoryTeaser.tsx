@@ -35,7 +35,7 @@ export function StoryTeaser() {
             method travels, and that he has stood exactly where it counts.
           </p>
           <div className="mt-9">
-            <ForwardLink href="/athlete/timeline">See the timeline</ForwardLink>
+            <ForwardLink href="/athlete#timeline">See the timeline</ForwardLink>
           </div>
         </Reveal>
       </div>

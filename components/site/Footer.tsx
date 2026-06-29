@@ -4,10 +4,10 @@ const COLUMNS = [
   {
     title: "Athlete",
     links: [
-      { label: "The story", href: "/athlete/story" },
-      { label: "Timeline", href: "/athlete/timeline" },
-      { label: "The 3 Y's", href: "/athlete/philosophy" },
-      { label: "Press", href: "/athlete/press" },
+      { label: "The story", href: "/athlete#story" },
+      { label: "Timeline", href: "/athlete#timeline" },
+      { label: "The 3 Y's", href: "/athlete#philosophy" },
+      { label: "Media", href: "/athlete#media" },
     ],
   },
   {

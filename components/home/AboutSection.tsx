@@ -36,7 +36,7 @@ export function AboutSection() {
             partnership at Italkraft, the luxury kitchen brand known for craftsmanship.
           </p>
           <div className="mt-9">
-            <ForwardLink href="/athlete/story">Learn more</ForwardLink>
+            <ForwardLink href="/athlete#story">Learn more</ForwardLink>
           </div>
         </Reveal>
       </div>

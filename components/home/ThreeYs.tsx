@@ -34,7 +34,7 @@ export function ThreeYs() {
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <ForwardLink href="/athlete/philosophy">Discover the method</ForwardLink>
+            <ForwardLink href="/athlete#philosophy">Discover the method</ForwardLink>
           </Reveal>
         </div>
 

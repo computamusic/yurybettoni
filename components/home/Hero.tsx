@@ -133,7 +133,7 @@ export function Hero() {
             </Link>
           </Magnetic>
           <Link
-            href="/athlete/story"
+            href="/athlete#story"
             className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-ink underline-draw"
           >
             Read his story
