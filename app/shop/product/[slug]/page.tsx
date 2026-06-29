@@ -5,6 +5,7 @@ import { Chevron } from "@/components/ui/Chevron";
 import { SubscribeBand } from "@/components/home/SubscribeBand";
 import { AddToCart } from "@/components/shop/AddToCart";
 import { ProductGallery } from "@/components/shop/ProductGallery";
+import { WristbandsDetail } from "@/components/shop/WristbandsDetail";
 import { PRODUCTS, getProduct } from "@/lib/products";
 import { galleryFor } from "@/lib/gallery";
 
@@ -37,6 +38,10 @@ export default async function ProductPage({
 
   const extra = product.galleryPrefix ? galleryFor(product.galleryPrefix) : [];
   const images = [product.image, ...extra.filter((i) => i !== product.image)];
+
+  if (product.slug === "gosymba-wristbands") {
+    return <WristbandsDetail product={product} images={images} />;
+  }
 
   return (
     <main>

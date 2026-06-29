@@ -1,12 +1,53 @@
+import Image from "next/image";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { Chevron } from "@/components/ui/Chevron";
 
 const TIERS = [
-  { n: "01", label: "Newsletter", action: "Free", href: "#", note: "Start here. The work, in your inbox." },
-  { n: "02", label: "Courses", action: "Buy", href: "#courses", note: "The method, on demand." },
-  { n: "03", label: "Coaching", action: "Inquire", href: "#coaching", note: "Time on court with Yury." },
-  { n: "04", label: "Speaking", action: "Inquire", href: "#speaking", note: "His story, on your stage." },
-  { n: "05", label: "Events", action: "Attend", href: "#events", note: "In the room, in person." },
+  {
+    n: "01",
+    label: "Newsletter",
+    action: "Free",
+    href: "#",
+    note: "Start here. The work, in your inbox.",
+    img: "/images/about-yury.jpg",
+    alt: "Yury Bettoni, portrait",
+  },
+  {
+    n: "02",
+    label: "Courses",
+    action: "Buy",
+    href: "#courses",
+    note: "The method, on demand.",
+    img: "/images/stroke-poster.jpg",
+    alt: "A stroke broken down, frame by frame",
+  },
+  {
+    n: "03",
+    label: "Coaching",
+    action: "Inquire",
+    href: "#coaching",
+    note: "Time on court with Yury.",
+    img: "/images/hero-1.jpg",
+    alt: "Yury Bettoni on court",
+  },
+  {
+    n: "04",
+    label: "Speaking",
+    action: "Inquire",
+    href: "#speaking",
+    note: "His story, on your stage.",
+    img: "/images/archive-academy.jpg",
+    alt: "From the Bettoni archive, the Bollettieri years",
+  },
+  {
+    n: "05",
+    label: "Events",
+    action: "Attend",
+    href: "#events",
+    note: "In the room, in person.",
+    img: "/images/archive-champions.jpg",
+    alt: "In the players' box with champions",
+  },
 ];
 
 export function OfferLadder() {
@@ -31,20 +72,36 @@ export function OfferLadder() {
             <RevealItem key={t.n} className="h-full">
               <a
                 href={t.href}
-                className="group flex h-full flex-col justify-between gap-10 bg-bone p-6 transition-colors hover:bg-bone-deep md:p-7"
+                className="group relative flex h-full min-h-[20rem] flex-col justify-between overflow-hidden bg-bone-deep p-6 md:min-h-[26rem] md:p-7"
               >
-                <div className="flex items-start justify-between">
-                  <span className="font-mono text-xs font-semibold tracking-[0.16em] text-mute">
+                <Image
+                  src={t.img}
+                  alt={t.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 20vw"
+                  className="graded object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-90"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(12,10,6,0.6) 0%, rgba(12,10,6,0.1) 28%, rgba(12,10,6,0.35) 60%, rgba(12,10,6,0.94) 100%)",
+                  }}
+                />
+
+                <div className="relative flex items-start justify-between">
+                  <span className="font-mono text-xs font-semibold tracking-[0.16em] text-light/70">
                     {t.n}
                   </span>
-                  <span className="text-ink/40 transition-colors group-hover:text-ink">
+                  <span className="text-light/55 transition-colors group-hover:text-light">
                     <Chevron />
                   </span>
                 </div>
-                <div>
+                <div className="relative">
                   <p className="eyebrow text-clay">{t.action}</p>
-                  <h3 className="mt-2 font-display text-2xl font-medium text-ink">{t.label}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink-soft">{t.note}</p>
+                  <h3 className="mt-2 font-display text-2xl font-medium text-light">{t.label}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-light/75">{t.note}</p>
                 </div>
               </a>
             </RevealItem>
