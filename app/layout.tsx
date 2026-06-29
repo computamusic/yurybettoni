@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ViewTransition } from "react";
 import Script from "next/script";
 import { Lora, Montserrat } from "next/font/google";
 import "./globals.css";
@@ -53,7 +54,11 @@ export default function RootLayout({
         <CartProvider>
           <ScrollProgress />
           <Header />
-          <main id="main">{children}</main>
+          {/* Only the page body is named — Header/Footer stay in the root
+              snapshot and hold still while the content crossfades. */}
+          <main id="main">
+            <ViewTransition name="page">{children}</ViewTransition>
+          </main>
           <Footer />
         </CartProvider>
       </body>

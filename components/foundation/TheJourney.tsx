@@ -3,17 +3,18 @@ import { BIO } from "@/lib/yury";
 
 const GOLD = "#c2913b";
 
-// The nomadic childhood that gave the Foundation its meaning — six countries
-// before Italy, rendered as a quiet connected sequence (not a literal map).
+// The African childhood that gave the Foundation its meaning — born in
+// Ethiopia, formed in Tanzania, settled in Italy, rendered as a quiet
+// connected sequence (not a literal map).
 export function TheJourney() {
   const stops = BIO.journey;
 
   return (
-    <section id="journey" className="scroll-mt-24 border-t border-line bg-bone">
+    <section id="journey" className="scroll-mt-36 border-t border-line bg-bone">
       <div className="mx-auto max-w-(--max-content) px-5 py-24 md:px-8 md:py-28">
         <Reveal className="max-w-2xl">
           <p className="eyebrow" style={{ color: GOLD }}>
-            Six countries before Italy
+            A childhood across Africa
           </p>
           <h2
             className="mt-5 font-display font-medium leading-[1.08] tracking-[-0.015em] text-ink"
@@ -22,10 +23,11 @@ export function TheJourney() {
             A childhood carried across a continent.
           </h2>
           <p className="mt-7 text-lg leading-relaxed text-ink-soft">
-            Born in Addis Ababa in {BIO.bornYear}, Yury was carried from one
-            country to the next as his family moved ahead of unrest — six homes
-            before a seventh in Italy. The boy who kept being uprooted grew up to
-            build a place that stays open for others.
+            Born in Addis Ababa in {BIO.bornYear}, Yury spent his boyhood moving
+            through several African countries as his father&apos;s work took the
+            family from place to place. Tanzania shaped him most — the formative
+            chapter that left him with the values the Foundation now runs on —
+            before the road led on to Italy.
           </p>
         </Reveal>
 
@@ -63,7 +65,7 @@ export function TheJourney() {
                 {/* Label block */}
                 <div className="md:mt-5">
                   <span className="block font-mono text-[0.7rem] uppercase tracking-[0.22em] text-mute">
-                    {i === 0 ? "Born" : last ? "Home" : `Stop ${i}`}
+                    {i === 0 ? "Born" : last ? "Home" : "Formative"}
                   </span>
                   <span
                     className="mt-2 block font-display text-xl font-medium leading-tight tracking-[-0.01em]"

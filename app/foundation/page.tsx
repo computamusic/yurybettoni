@@ -14,7 +14,7 @@ import { SubscribeBand } from "@/components/home/SubscribeBand";
 export const metadata: Metadata = {
   title: "The Foundation — Yury Bettoni",
   description:
-    "The Alessandra Bettoni Foundation. In memory of his mother, Yury pairs tennis and education for young people in Ethiopia and Tanzania — a door that opens and stays open.",
+    "The Alessandra Bettoni Foundation. In his mother's memory, Yury meets underserved young people in Ethiopia and Tanzania with basic needs, education, and tennis — a door that opens and stays open.",
 };
 
 export default function FoundationPage() {
@@ -23,7 +23,7 @@ export default function FoundationPage() {
       <PageHeader
         eyebrow="The Legacy — Alessandra Bettoni Foundation"
         title="She gave me the game. We give it forward."
-        lead="Born in Addis Ababa and carried across six countries before Italy, Yury was given the game by his mother, Alessandra. In her memory, he pairs tennis and education for young people in Ethiopia and Tanzania — turning a nomad's grief into a door that opens, and stays open."
+        lead="Born in Addis Ababa and raised across Africa for his father's work, Yury was shaped most by Tanzania. He carries his mother Alessandra's name forward in the Foundation built in her memory — meeting underserved young people in Ethiopia and Tanzania with basic needs, education, and tennis. A door that opens, and stays open."
         image="/images/legacy-africa.jpg"
         imageAlt="The Bettoni family in Africa"
         accent="#c2913b"

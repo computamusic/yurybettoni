@@ -40,7 +40,7 @@ export function ThreeYs() {
               </p>
             </Reveal>
             <Reveal delay={0.1} className="mt-8">
-              <ForwardLink href="/work#method">Discover the method</ForwardLink>
+              <ForwardLink href="/y-system">Discover the method</ForwardLink>
             </Reveal>
           </div>
 
@@ -70,7 +70,7 @@ export function ThreeYs() {
                     title: y.title,
                     body: y.body,
                     detail: y.short,
-                    href: "/work#method",
+                    href: "/y-system",
                     cta: "Explore the full method",
                   })
                 }

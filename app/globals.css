@@ -127,3 +127,34 @@ body {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ───────────────────────────────────────────────────────────
+   Page transitions — a calm crossfade between routes (View
+   Transitions API). The page body carries the `page` name (set in
+   layout.tsx); the surrounding chrome lives in `root` and holds
+   still, so the scroll reset on navigation dissolves under the fade
+   instead of reading as a jump.
+   ─────────────────────────────────────────────────────────── */
+::view-transition-old(page),
+::view-transition-new(page) {
+  animation-duration: 360ms;
+  animation-timing-function: var(--ease-out-line);
+}
+/* The outgoing page clears a touch sooner than the new one settles,
+   so the two don't muddy each other mid-fade. */
+::view-transition-old(page) {
+  animation-duration: 260ms;
+}
+/* Anchor the header/footer — no crossfade on the chrome. */
+::view-transition-group(root) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}

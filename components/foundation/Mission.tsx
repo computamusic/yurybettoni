@@ -6,21 +6,40 @@ const GOLD = "#c2913b";
 const FUNDING = [
   {
     name: "The Y-System",
-    body: "His coaching method and player development programs. A share of every engagement is committed to the foundation — so the work that builds champions also builds courts.",
+    body: "A revolutionary visual tennis and training method that sharpens biomechanics and cognitive performance. A share of every engagement is committed to the Foundation — so the work that builds players also builds courts.",
   },
   {
     name: "GoSymba",
-    body: "The travel-and-gear venture. Curated kit for the road, with a portion of proceeds routed directly to youth programs in Ethiopia and Tanzania.",
+    body: "A socially driven streetwear line. A portion of every order is routed directly to youth programs in Ethiopia and Tanzania.",
   },
   {
-    name: "Curated experiences",
-    body: "Clinics, retreats, and one-of-one days with Yury. Premium by design, purposeful by intent — the margin keeps seasons funded and doors open.",
+    name: "A sustainable model",
+    body: "Sport, innovation, and design working as one ecosystem — built to expand its impact year on year, rather than depend on a single campaign or a single good month.",
+  },
+];
+
+const PROGRAMS = [
+  {
+    name: "Basic needs",
+    body: "Food, clean water, school supplies, and clothing — the ground a child stands on before anything else becomes possible.",
+  },
+  {
+    name: "Education",
+    body: "Tuition assistance and learning materials, so school stays within reach and a child has a path to a future.",
+  },
+  {
+    name: "Tennis outreach",
+    body: "Coaching, courts, and equipment — the structure of a real season. Discipline learned with a racquet travels into every other room of a life.",
+  },
+  {
+    name: "Community partnerships",
+    body: "Working hand in hand with local organisations already trusted on the ground, so support reaches the children who need it most.",
   },
 ];
 
 export function Mission() {
   return (
-    <section id="mission" className="scroll-mt-24 bg-bone-deep">
+    <section id="mission" className="scroll-mt-36 bg-bone-deep">
       <div className="mx-auto max-w-(--max-content) px-5 py-24 md:px-8 md:py-32">
         <Reveal className="max-w-2xl">
           <p className="eyebrow" style={{ color: GOLD }}>
@@ -33,31 +52,23 @@ export function Mission() {
             A door that opens — and stays open.
           </h2>
           <p className="mt-7 text-lg leading-relaxed text-ink-soft">
-            The Alessandra Bettoni Foundation serves young people in Ethiopia and
-            Tanzania, the two countries that raised him. The model is simple and
-            deliberate: pair tennis with education, and you give a child more than a
-            sport — you give them a reason to stay in school, a community that
-            expects something of them, and a path that does not close behind them.
+            The Alessandra Bettoni Foundation supports underserved young people in
+            Ethiopia and Tanzania — the country where Yury was born and the one
+            that shaped him most. It begins with what a child needs to get through
+            the day, builds in the schooling that gives them a future, and adds the
+            tennis that teaches discipline along the way: more than a sport — a
+            reason to stay in school, a community that expects something of them,
+            and a path that does not close behind them.
           </p>
         </Reveal>
 
-        <RevealGroup className="mt-16 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
-          <RevealItem className="bg-bone-deep p-8 md:p-10">
-            <h3 className="font-display text-2xl font-medium text-ink">Tennis</h3>
-            <p className="mt-4 text-base leading-relaxed text-ink-soft">
-              Coaching, courts, and equipment — the structure of a real season.
-              Discipline learned with a racquet travels into every other room of a
-              life.
-            </p>
-          </RevealItem>
-          <RevealItem className="bg-bone-deep p-8 md:p-10">
-            <h3 className="font-display text-2xl font-medium text-ink">Education</h3>
-            <p className="mt-4 text-base leading-relaxed text-ink-soft">
-              School support tied to the program, so that progress on the court is
-              matched by progress off it. The two reinforce each other; neither
-              stands alone.
-            </p>
-          </RevealItem>
+        <RevealGroup className="mt-16 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
+          {PROGRAMS.map((p) => (
+            <RevealItem key={p.name} className="bg-bone-deep p-8 md:p-10">
+              <h3 className="font-display text-2xl font-medium text-ink">{p.name}</h3>
+              <p className="mt-4 text-base leading-relaxed text-ink-soft">{p.body}</p>
+            </RevealItem>
+          ))}
         </RevealGroup>
       </div>
 

@@ -10,9 +10,10 @@ import { CartButton } from "@/components/shop/CartButton";
 
 const NAV = [
   { label: "Athlete", href: "/athlete" },
+  { label: "Y-System", href: "/y-system" },
   { label: "Press", href: "/press" },
   { label: "Legacy", href: "/foundation" },
-  { label: "Work with Yury", href: "/work" },
+  { label: "Work", href: "/work" },
   { label: "Shop", href: "/shop" },
 ];
 

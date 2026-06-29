@@ -47,9 +47,9 @@ export function LegacyTeaser() {
               <span className="mt-1 block italic text-light/70">We give it forward.</span>
             </h2>
             <p className="mt-7 max-w-md font-display text-lg leading-relaxed text-light/75">
-              In memory of his mother, Yury built a home for young people in Ethiopia and
-              Tanzania — where tennis and education open a door that stays open. Africa, he
-              says, teaches the real, basic values of life.
+              In his mother&apos;s memory, Yury stands with young people in Ethiopia and
+              Tanzania — meeting them with basic needs, education, and tennis, a door that
+              opens and stays open. Africa, he says, teaches the real, basic values of life.
             </p>
             <Link
               href="/foundation"

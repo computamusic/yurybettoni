@@ -7,8 +7,11 @@ export const BIO = {
   bornYear: 1976,
   bornPlace: "Addis Ababa, Ethiopia",
   based: "Miami Beach, Florida",
-  // Family fled political unrest across these before settling in Italy.
-  journey: ["Ethiopia", "Saudi Arabia", "Liberia", "Ivory Coast", "Tanzania", "Italy"],
+  // Born in Ethiopia to Alessandra and Amerigo — both born in Eritrea to Italian
+  // immigrant parents who developed infrastructure projects across the region.
+  // His father's work moved the family through several African countries;
+  // Tanzania shaped the most formative chapter of his youth, before Italy.
+  journey: ["Ethiopia", "Tanzania", "Italy"],
 };
 
 export type Quote = { text: string; attribution?: string; context?: string };
@@ -28,7 +31,7 @@ export const QUOTES: Record<string, Quote> = {
     attribution: "Yury Bettoni",
   },
   africa: {
-    text: "Africa touches you in a different way. It teaches the real, basic values of life.",
+    text: "Africa touches humans in a different way. It teaches the real, basic values of life.",
     attribution: "Yury Bettoni",
   },
   firstBall: {
@@ -50,7 +53,7 @@ export type TimelineEvent = {
 };
 
 export const TIMELINE: TimelineEvent[] = [
-  { year: "1976", title: "Born in Addis Ababa", note: "Born in Ethiopia to Italian parents — the start of a childhood carried across continents." },
+  { year: "1976", title: "Born in Addis Ababa", note: "Born in Ethiopia to an Italian family — the start of a childhood spent moving across Africa for his father's work." },
   { year: "1983", title: "First ball, Dar es Salaam", note: "Sees a tennis court for the first time at age seven, in Tanzania, and hits his first ball clean off the strings." },
   { year: "1989", title: "Pushed onto the court", note: "Reluctantly made to play by a school teacher — then reaches the final of both his school event and the Italian National Mini championship in the same week. His mother, Alessandra, tells him to take it seriously." },
   { year: "1990", title: "Rome, from the stands", note: "At thirteen he watches his first star up close at the Italian Open — and dreams of the players' side of the rope." },
@@ -88,7 +91,7 @@ export const BIOFILE: { label: string; value: string }[] = [
   { label: "Idol", value: "Andre Agassi" },
   { label: "Favourite courts", value: "Rome · Monte Carlo · US Open" },
   { label: "On screen", value: "HBO's “Ballers”" },
-  { label: "Languages of a nomad", value: "Six countries before Italy" },
+  { label: "Raised", value: "Across Africa · mostly Tanzania" },
 ];
 
 // A genuinely charming anecdote, told straight.
@@ -125,6 +128,80 @@ export const YSYSTEM_INTRO = {
   title: "A visual method for moving better — on the court and off it.",
   body: "The Y-System is Yury's own framework, built on the 3 Y's: mobilitY, stabilitY and velocitY. It reads tennis as movement first, optimising body biomechanics and the cognitive side of the game so players and coaches share one language for getting better.",
 };
+
+// The signature line of the original Y-System pages.
+export const YSYSTEM_TAGLINE = "Be the Architect of Your Own Body";
+
+// The full definition, as the live site frames it.
+export const YSYSTEM_DEFINITION = {
+  lead: "The Y-System is a holistic tennis training methodology designed to optimise physical performance and cognitive development through the core principles of Mobility, Stability and Velocity — the 3 Y's.",
+  detail:
+    "It reads the game as movement first, analysing tennis-specific stances — natural, closed, open and semi-open — and the biomechanics behind them: hip rotation, hip drive, dominant-leg activation and upper-body coordination. Across seven phases it builds tennis performance and motor skill together, so the body learns the pattern as the mind learns the why.",
+};
+
+// The seven phases that make up the method, in order.
+export const YSYSTEM_PHASES = [
+  {
+    n: "01",
+    title: "Footwork Fundamentals",
+    body: "Tennis-specific movement and conditioning using training tools like the Y-Base, alongside functional and resistance training.",
+  },
+  {
+    n: "02",
+    title: "Stroke Fundamentals",
+    body: "Simplifying stroke mechanics by analysing each player's biomechanics and physical abilities.",
+  },
+  {
+    n: "03",
+    title: "Water Training",
+    body: "Enhancing control, balance and body awareness for refined, low-impact movement.",
+  },
+  {
+    n: "04",
+    title: "On-Court Drills",
+    body: "Developing positioning, footwork and shot selection at varying heights and directions.",
+  },
+  {
+    n: "05",
+    title: "Two Ball Speeds",
+    body: "Teaching players to differentiate forward speed from rotational speed — smarter shot selection and tactical variety.",
+  },
+  {
+    n: "06",
+    title: "Mental Strategies & Empowerment",
+    body: "Implementing System 5 (court zones) for on-court tactics, and a life philosophy that carries off the court.",
+  },
+  {
+    n: "07",
+    title: "Performance Nutrition",
+    body: "Customised eating plans to fuel performance, recovery and overall wellness.",
+  },
+] as const;
+
+// The benefit the method delivers, in the site's own words.
+export const YSYSTEM_BENEFIT =
+  "The Y-System helps players visually understand the mechanics of each movement, stimulate cognitive skills, and reach the ideal balance of the 3 Y's — a faster, stronger, more responsive and injury-resistant athlete.";
+
+// The Y-Base — the method's signature training tool.
+export const YBASE = {
+  eyebrow: "The training tool",
+  title: "The Y-Base",
+  body: "Its innovative Y shape taps into natural pattern recognition, amplifying both physical and mental performance. Versatile and intuitive, it lets anyone — not just tour players — train the 3 Y's and unlock their full athletic potential.",
+};
+
+// The bookable services, mirroring the live Y-System booking form's categories.
+export const YSYSTEM_BOOKING_CATEGORIES = [
+  "1-on-1 private coaching",
+  "Group coaching",
+  "Online training",
+  "Video analysis",
+  "Y-Base",
+  "Water training",
+  "Functional circuit training",
+  "Assessment meeting",
+  "Eating plans",
+  "Nutrition: intake quantities & timing",
+] as const;
 
 // The Y-System's purchasable / programmatic expressions.
 export const YSYSTEM_PROGRAMS = [

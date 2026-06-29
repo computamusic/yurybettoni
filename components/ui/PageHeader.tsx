@@ -1,15 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { easeOut } from "@/lib/motion";
+import { SectionNav } from "@/components/ui/SectionNav";
 
 // Reusable cinematic pillar header (full-bleed image, dark, light text).
+// Pass a single `image`, or `images` to cross-fade a set of stills (a carousel,
+// mirroring the original site's gallery headers).
 export function PageHeader({
   eyebrow,
   title,
   lead,
   image,
+  images,
   imageAlt,
   imagePosition = "center",
   anchors,
@@ -19,29 +24,43 @@ export function PageHeader({
   title: string;
   lead?: string;
   image: string;
+  images?: string[];
   imageAlt: string;
   imagePosition?: string;
   anchors?: { href: string; label: string }[];
   accent?: string;
 }) {
   const reduce = useReducedMotion();
+  const heroRef = useRef<HTMLElement | null>(null);
+  const slides = images && images.length > 0 ? images : [image];
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    if (reduce || slides.length < 2) return;
+    const id = setInterval(() => setIdx((i) => (i + 1) % slides.length), 5200);
+    return () => clearInterval(id);
+  }, [reduce, slides.length]);
   const rise = (d: number) => ({
     hidden: { opacity: 0, y: reduce ? 0 : 24 },
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easeOut, delay: d } },
   });
 
   return (
-    <section className="relative overflow-hidden bg-night pt-20 md:flex md:min-h-[80svh] md:items-end">
+    <>
+    <section ref={heroRef} className="relative overflow-hidden bg-night pt-20 md:flex md:min-h-[80svh] md:items-end">
       <div className="absolute inset-x-0 top-0 h-[52svh] overflow-hidden md:inset-0 md:h-auto">
-        <Image
-          src={image}
-          alt={imageAlt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-          style={{ objectPosition: imagePosition }}
-        />
+        {slides.map((src, i) => (
+          <Image
+            key={src}
+            src={src}
+            alt={i === idx ? imageAlt : ""}
+            fill
+            priority={i === 0}
+            sizes="100vw"
+            className="object-cover transition-opacity duration-[1600ms] ease-in-out"
+            style={{ objectPosition: imagePosition, opacity: i === idx ? 1 : 0 }}
+          />
+        ))}
       </div>
       <div
         aria-hidden
@@ -94,5 +113,9 @@ export function PageHeader({
         )}
       </div>
     </section>
+      {anchors && anchors.length > 0 && (
+        <SectionNav anchors={anchors} accent={accent} heroRef={heroRef} />
+      )}
+    </>
   );
 }

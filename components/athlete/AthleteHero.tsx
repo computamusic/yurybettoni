@@ -7,7 +7,7 @@ export function AthleteHero() {
     <PageHeader
       eyebrow="The Athlete — Pillar 01"
       title="The competitor who never stopped competing."
-      lead="Born in Addis Ababa, raised across six countries, forged on the red clay of Rome and inside the players' box of champions — the years that built the method, the discipline, and the man behind everything that came next."
+      lead="Born in Addis Ababa, raised across Africa, forged on the red clay of Rome and inside the players' box of champions — the years that built the method, the discipline, and the man behind everything that came next."
       image="/images/hero-2.jpg"
       imageAlt="Yury Bettoni on the clay in Rome"
       imagePosition="60% center"

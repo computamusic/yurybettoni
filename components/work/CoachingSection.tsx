@@ -10,7 +10,7 @@ const INCLUDED = [
 
 export function CoachingSection() {
   return (
-    <section id="coaching" className="scroll-mt-24 border-t border-line bg-bone">
+    <section id="coaching" className="scroll-mt-36 border-t border-line bg-bone">
       <div className="mx-auto max-w-(--max-content) px-5 py-24 md:px-8 md:py-32">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           <div>

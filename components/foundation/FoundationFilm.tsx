@@ -12,7 +12,7 @@ export function FoundationFilm() {
   return (
     <section
       id="film"
-      className="relative min-h-[70svh] scroll-mt-24 overflow-hidden bg-night"
+      className="relative min-h-[70svh] scroll-mt-36 overflow-hidden bg-night"
     >
       <AmbientVideo
         src="/video/foundation.mp4"

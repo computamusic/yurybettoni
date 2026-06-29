@@ -17,7 +17,7 @@ export function SharedCourt() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="max-w-md text-base leading-relaxed text-light/70">
-              A nomad&apos;s childhood became a front-row seat to a golden era of the game.
+              A childhood spent moving across Africa became a front-row seat to a golden era of the game.
               The names below are not a wish list — they are training partners, hitting
               partners, mentors and rivals from across the years.
             </p>

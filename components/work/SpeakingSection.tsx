@@ -10,7 +10,7 @@ const FORMATS = [
 
 export function SpeakingSection() {
   return (
-    <section id="speaking" className="scroll-mt-24 bg-night text-light">
+    <section id="speaking" className="scroll-mt-36 bg-night text-light">
       <div className="mx-auto max-w-(--max-content) px-5 py-24 md:px-8 md:py-32">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-end lg:gap-20">
           <Reveal>

@@ -52,7 +52,7 @@ const TIERS = [
 
 export function OfferLadder() {
   return (
-    <section className="scroll-mt-24 border-t border-line bg-bone">
+    <section className="scroll-mt-36 border-t border-line bg-bone">
       <div className="mx-auto max-w-(--max-content) px-5 py-24 md:px-8 md:py-32">
         <Reveal className="max-w-2xl">
           <p className="eyebrow text-clay">The ladder</p>

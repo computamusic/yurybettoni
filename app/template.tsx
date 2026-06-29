@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion, useReducedMotion } from "motion/react";
-import { easeOut, easeLine, easeSoft } from "@/lib/motion";
+import { easeLine } from "@/lib/motion";
 
 // Persists across template remounts; resets only on a full page reload.
 // Lets the very first paint belong to the hero's own "Baseline" load sequence,
@@ -25,16 +25,15 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   if (initial) return <>{children}</>;
 
-  // The Foundation runs a touch slower and gentler — the tonal shift extends
-  // into the motion (docs/07-motion-system.md).
+  // The page crossfade is handled by the browser (View Transitions). All this
+  // template adds on navigation is the brand's "Baseline" — a clay hairline
+  // that draws across the top as the new page settles in, then dissolves.
+  // The Foundation runs a touch slower and gentler (docs/07-motion-system.md).
   const soft = pathname.startsWith("/foundation");
   const d = soft ? 1.15 : 1;
-  const ease = soft ? easeSoft : easeOut;
 
   return (
     <>
-      {/* The Baseline — a hairline draws across the top as the page arrives,
-          then dissolves. The page settles onto the line it just drew. */}
       {!reduce && (
         <motion.span
           aria-hidden
@@ -47,17 +46,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           }}
         />
       )}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          duration: (reduce ? 0.35 : 0.55) * d,
-          ease,
-          delay: reduce ? 0 : 0.12,
-        }}
-      >
-        {children}
-      </motion.div>
+      {children}
     </>
   );
 }

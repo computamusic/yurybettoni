@@ -11,7 +11,7 @@ const STATS = [
 
 export function Impact() {
   return (
-    <section id="impact" className="scroll-mt-24 bg-bone">
+    <section id="impact" className="scroll-mt-36 bg-bone">
       <div className="mx-auto max-w-(--max-content) px-5 py-24 md:px-8 md:py-32">
         <Reveal className="max-w-2xl">
           <p className="eyebrow" style={{ color: GOLD }}>

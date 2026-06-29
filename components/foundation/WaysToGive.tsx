@@ -7,7 +7,7 @@ const GOLD = "#c2913b";
 
 export function WaysToGive() {
   return (
-    <section id="give" className="scroll-mt-24 bg-bone-deep">
+    <section id="give" className="scroll-mt-36 bg-bone-deep">
       <div className="mx-auto max-w-(--max-content) px-5 py-24 md:px-8 md:py-32">
         <Reveal className="max-w-2xl">
           <p className="eyebrow" style={{ color: GOLD }}>

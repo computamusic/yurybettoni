@@ -9,7 +9,7 @@ const CHAPTERS = [
     title: "Africa",
     img: "/images/legacy-africa.jpg",
     alt: "The Bettoni family in Africa",
-    body: "Born in Addis Ababa in 1976 to Italian parents, he spent a childhood carried across six countries — Ethiopia, Saudi Arabia, Liberia, Ivory Coast, Tanzania — before Italy. He learned early that home is something you carry, not somewhere you stay. It was his mother, Alessandra, who set the standard he would chase for life.",
+    body: "Born in Addis Ababa in 1976 to Alessandra and Amerigo — an Italian family whose own parents had developed infrastructure across the region — he spent his childhood moving through several African countries as his father's work took them from place to place. Tanzania shaped him most. He learned early that home is something you carry, not somewhere you stay, and it was his mother, Alessandra, who set the standard he would chase for life.",
     quote: QUOTES.africa.text,
   },
   {

@@ -32,7 +32,7 @@ const PROOF = [
 
 export function Pedigree() {
   return (
-    <section className="scroll-mt-24 border-t border-light/15 bg-night text-light">
+    <section className="scroll-mt-36 border-t border-light/15 bg-night text-light">
       <div className="mx-auto max-w-(--max-content) px-5 py-24 md:px-8 md:py-32">
         <Reveal className="max-w-2xl">
           <p className="eyebrow text-clay">Why learn from Yury</p>

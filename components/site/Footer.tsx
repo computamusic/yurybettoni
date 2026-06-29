@@ -22,6 +22,7 @@ const COLUMNS = [
   {
     title: "Work",
     links: [
+      { label: "The Y-System", href: "/y-system" },
       { label: "Courses", href: "/work/courses" },
       { label: "Coaching", href: "/work/coaching" },
       { label: "Speaking", href: "/work/speaking" },

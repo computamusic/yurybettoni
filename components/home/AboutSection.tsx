@@ -27,7 +27,7 @@ export function AboutSection() {
             The athlete who became an architect.
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft">
-            Born in Addis Ababa and carried across six countries before Italy, Yury turned a
+            Born in Addis Ababa and raised across Africa, Yury turned a
             first ball struck clean off the strings into a life on tour. He trained at the
             Nick Bollettieri Academy, hit with champions, and coached at the highest level —
             then built a second life off the court, from a partnership at the luxury kitchen
