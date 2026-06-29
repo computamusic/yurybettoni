@@ -5,7 +5,7 @@ import { Chevron } from "@/components/ui/Chevron";
 import { useCart } from "@/components/shop/Cart";
 import type { Product } from "@/lib/products";
 
-export function AddToCart({ product }: { product: Product }) {
+export function AddToCart({ product, color }: { product: Product; color?: string }) {
   const { add } = useCart();
   const [size, setSize] = useState<string | null>(null);
   const [error, setError] = useState(false);
@@ -28,6 +28,7 @@ export function AddToCart({ product }: { product: Product }) {
         image: product.image,
         fit: product.fit,
         size: size ?? undefined,
+        color: color ?? undefined,
       },
       1,
     );
@@ -79,7 +80,7 @@ export function AddToCart({ product }: { product: Product }) {
       </button>
       {added && (
         <p className="mt-4 text-sm text-mute">
-          In your bag{size ? ` · size ${size}` : ""}. Open the bag any time from the header.
+          In your bag{color ? ` · ${color}` : ""}{size ? ` · size ${size}` : ""}. Open the bag any time from the header.
         </p>
       )}
     </div>

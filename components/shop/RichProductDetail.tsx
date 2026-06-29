@@ -5,15 +5,19 @@ import { Chevron, ForwardLink } from "@/components/ui/Chevron";
 import { ProductGallery } from "@/components/shop/ProductGallery";
 import { AddToCart } from "@/components/shop/AddToCart";
 import { SubscribeBand } from "@/components/home/SubscribeBand";
+import { HeroCrossfade } from "@/components/shop/HeroCrossfade";
+import { VariantPurchase } from "@/components/shop/VariantPurchase";
 import type { Product } from "@/lib/products";
 import { contentFor } from "@/lib/product-content";
-import { galleryFor, heroFor } from "@/lib/gallery";
+import { colorVariantsFor, galleryFor, heroFor, heroSetFor } from "@/lib/gallery";
 
 const FALLBACK_HERO = "/images/clay-texture.png";
 
 export function RichProductDetail({ product }: { product: Product }) {
   const content = contentFor(product.slug);
   const gallery = content ? galleryFor(content.galleryPrefix) : [];
+  const variants = content ? colorVariantsFor(content.galleryPrefix) : [];
+  const heroSet = content ? heroSetFor(content.galleryPrefix) : [];
   const heroImg = (content && heroFor(content.galleryPrefix)) || FALLBACK_HERO;
   const images = [product.image, ...gallery];
 
@@ -38,31 +42,41 @@ export function RichProductDetail({ product }: { product: Product }) {
           </Link>
 
           <div className="mt-8 grid gap-10 pb-20 md:grid-cols-2 md:gap-16 md:pb-28">
-            <ProductGallery images={images} alt={product.name} fit={product.fit} cause={product.cause} />
+            {variants.length > 1 ? (
+              <VariantPurchase
+                product={product}
+                tagline={content?.tagline ?? product.blurb}
+                variants={variants}
+              />
+            ) : (
+              <>
+                <ProductGallery images={images} alt={product.name} fit={product.fit} cause={product.cause} />
 
-            <div className="md:py-2">
-              <p className="eyebrow text-clay">{product.category} · GoSymba</p>
-              <h1
-                className="mt-4 font-display font-medium leading-[1.0] tracking-[-0.02em] text-ink"
-                style={{ fontSize: "var(--text-display)" }}
-              >
-                {product.name}
-              </h1>
-              <p className="mt-5 max-w-md text-lg leading-relaxed text-ink-soft">
-                {content?.tagline ?? product.blurb}
-              </p>
-              <p className="mt-6 font-mono text-3xl tabular-nums text-ink">${product.price}</p>
-              <AddToCart product={product} />
-              {product.cause && (
-                <p className="mt-8 max-w-md border-l-2 border-clay pl-4 text-sm leading-relaxed text-mute">
-                  A share of this piece supports the{" "}
-                  <Link href="/foundation" className="text-ink-soft underline-draw">
-                    Alessandra Bettoni Foundation
-                  </Link>
-                  .
-                </p>
-              )}
-            </div>
+                <div className="md:py-2">
+                  <p className="eyebrow text-clay">{product.category} · GoSymba</p>
+                  <h1
+                    className="mt-4 font-display font-medium leading-[1.0] tracking-[-0.02em] text-ink"
+                    style={{ fontSize: "var(--text-display)" }}
+                  >
+                    {product.name}
+                  </h1>
+                  <p className="mt-5 max-w-md text-lg leading-relaxed text-ink-soft">
+                    {content?.tagline ?? product.blurb}
+                  </p>
+                  <p className="mt-6 font-mono text-3xl tabular-nums text-ink">${product.price}</p>
+                  <AddToCart product={product} />
+                  {product.cause && (
+                    <p className="mt-8 max-w-md border-l-2 border-clay pl-4 text-sm leading-relaxed text-mute">
+                      A share of this piece supports the{" "}
+                      <Link href="/foundation" className="text-ink-soft underline-draw">
+                        Alessandra Bettoni Foundation
+                      </Link>
+                      .
+                    </p>
+                  )}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -71,7 +85,11 @@ export function RichProductDetail({ product }: { product: Product }) {
         <>
           {/* ── Hero separator ─────────────────────────────── */}
           <section className="relative flex min-h-[58svh] items-end overflow-hidden bg-night">
-            <Image src={heroImg} alt="" aria-hidden fill sizes="100vw" className="object-cover" />
+            {heroSet.length > 1 ? (
+              <HeroCrossfade images={heroSet} className="absolute inset-0" />
+            ) : (
+              <Image src={heroImg} alt="" aria-hidden fill sizes="100vw" className="object-cover" />
+            )}
             <div
               aria-hidden
               className="absolute inset-0"

@@ -19,6 +19,7 @@ export type CartItem = {
   image: string;
   fit: "cover" | "contain";
   size?: string;
+  color?: string;
   qty: number;
 };
 
@@ -34,7 +35,8 @@ type CartCtx = {
   isOpen: boolean;
 };
 
-const keyOf = (slug: string, size?: string) => `${slug}__${size ?? "-"}`;
+const keyOf = (i: { slug: string; size?: string; color?: string }) =>
+  `${i.slug}__${i.size ?? "-"}__${i.color ?? "-"}`;
 
 const Ctx = createContext<CartCtx | null>(null);
 
@@ -80,11 +82,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
       close: () => setIsOpen(false),
       add: (item, qty = 1) => {
         setItems((prev) => {
-          const k = keyOf(item.slug, item.size);
-          const found = prev.find((i) => keyOf(i.slug, i.size) === k);
+          const k = keyOf(item);
+          const found = prev.find((i) => keyOf(i) === k);
           if (found)
             return prev.map((i) =>
-              keyOf(i.slug, i.size) === k ? { ...i, qty: i.qty + qty } : i,
+              keyOf(i) === k ? { ...i, qty: i.qty + qty } : i,
             );
           return [...prev, { ...item, qty }];
         });
@@ -93,10 +95,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
       setQty: (k, qty) =>
         setItems((prev) =>
           prev
-            .map((i) => (keyOf(i.slug, i.size) === k ? { ...i, qty } : i))
+            .map((i) => (keyOf(i) === k ? { ...i, qty } : i))
             .filter((i) => i.qty > 0),
         ),
-      remove: (k) => setItems((prev) => prev.filter((i) => keyOf(i.slug, i.size) !== k)),
+      remove: (k) => setItems((prev) => prev.filter((i) => keyOf(i) !== k)),
     };
   }, [items, isOpen]);
 
@@ -155,7 +157,7 @@ function CartDrawer() {
               <>
                 <div className="flex-1 overflow-y-auto px-6 py-5">
                   {items.map((i) => {
-                    const k = keyOf(i.slug, i.size);
+                    const k = keyOf(i);
                     return (
                       <div key={k} className="flex gap-4 border-b border-line py-5 first:pt-0">
                         <div className="relative h-24 w-20 shrink-0 overflow-hidden bg-bone-deep">
@@ -171,7 +173,11 @@ function CartDrawer() {
                           <div className="flex items-start justify-between gap-2">
                             <div>
                               <p className="font-display text-base text-ink">{i.name}</p>
-                              {i.size && <p className="eyebrow mt-1 text-mute">Size {i.size}</p>}
+                              {(i.color || i.size) && (
+                                <p className="eyebrow mt-1 text-mute">
+                                  {[i.color, i.size && `Size ${i.size}`].filter(Boolean).join(" · ")}
+                                </p>
+                              )}
                             </div>
                             <span className="font-mono text-sm tabular-nums text-ink-soft">
                               ${i.price * i.qty}
