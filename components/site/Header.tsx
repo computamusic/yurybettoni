@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { CartButton } from "@/components/shop/CartButton";
 
 const NAV = [
   { label: "Athlete", href: "/athlete" },
+  { label: "Press", href: "/press" },
   { label: "Legacy", href: "/foundation" },
   { label: "Work with Yury", href: "/work" },
   { label: "Shop", href: "/shop" },
@@ -17,6 +19,17 @@ const NAV = [
 export function Header() {
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState<string | null>(null);
+  const pathname = usePathname();
+  const reduce = useReducedMotion();
+
+  // The active route, then the hovered item, decides where the pill rests.
+  const active =
+    NAV.find((n) => pathname === n.href || pathname.startsWith(`${n.href}/`))?.href ?? null;
+  const highlight = hovered ?? active;
+  const pillSpring = reduce
+    ? { duration: 0 }
+    : { type: "spring" as const, stiffness: 380, damping: 32, mass: 0.8 };
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 24);
@@ -51,16 +64,39 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-10 lg:flex">
-          {NAV.map((n) => (
-            <Link
-              key={n.href}
-              href={n.href}
-              className="text-[0.8rem] font-semibold uppercase tracking-[0.16em] text-ink-soft underline-draw transition-colors hover:text-ink"
-            >
-              {n.label}
-            </Link>
-          ))}
+        <nav
+          className="relative hidden items-center gap-1 lg:flex"
+          onMouseLeave={() => setHovered(null)}
+        >
+          {NAV.map((n) => {
+            const on = highlight === n.href;
+            return (
+              <Link
+                key={n.href}
+                href={n.href}
+                onMouseEnter={() => setHovered(n.href)}
+                aria-current={active === n.href ? "page" : undefined}
+                className={`relative rounded-full px-4 py-2 text-[0.8rem] font-semibold uppercase tracking-[0.16em] transition-colors duration-200 ${
+                  on ? "text-ink" : "text-ink-soft hover:text-ink"
+                }`}
+              >
+                {on && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    aria-hidden
+                    className="absolute inset-0 rounded-full bg-clay/12"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={pillSpring}
+                  >
+                    {/* a clay baseline rides under the active word — the brand's signature line */}
+                    <span className="absolute inset-x-3 bottom-[7px] h-px bg-clay/55" />
+                  </motion.span>
+                )}
+                <span className="relative">{n.label}</span>
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
@@ -95,22 +131,35 @@ export function Header() {
             className="fixed inset-0 z-30 h-[100svh] bg-bone lg:hidden"
           >
             <nav className="flex h-full flex-col px-5 pb-10 pt-28">
-              {NAV.map((n, i) => (
-                <motion.div
-                  key={n.href}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.05 * i + 0.05 }}
-                >
-                  <Link
-                    href={n.href}
-                    onClick={() => setOpen(false)}
-                    className="block border-b border-line py-5 font-display text-3xl text-ink"
+              {NAV.map((n, i) => {
+                const isActive = active === n.href;
+                return (
+                  <motion.div
+                    key={n.href}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.05 * i + 0.05 }}
                   >
-                    {n.label}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={n.href}
+                      onClick={() => setOpen(false)}
+                      aria-current={isActive ? "page" : undefined}
+                      className={`flex items-center gap-3 border-b border-line py-5 font-display text-3xl transition-colors ${
+                        isActive ? "text-clay" : "text-ink"
+                      }`}
+                    >
+                      {isActive && (
+                        <motion.span
+                          layoutId="nav-pill-mobile"
+                          aria-hidden
+                          className="h-6 w-px bg-clay"
+                        />
+                      )}
+                      {n.label}
+                    </Link>
+                  </motion.div>
+                );
+              })}
               <div className="mt-8 flex items-center gap-4">
                 <Link
                   href="/subscribe"
