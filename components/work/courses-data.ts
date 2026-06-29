@@ -90,7 +90,7 @@ export const COURSES: Course[] = [
       { n: 4, title: "Recovering from errors", detail: "Turning the page so one mistake doesn't become three." },
       { n: 5, title: "Competing your way", detail: "Building a personal mindset you can trust under the lights." },
     ],
-    image: "/images/about-yury.jpg",
+    image: "/images/archive-indianwells.jpg",
   },
   {
     slug: "match-strategy",
@@ -114,7 +114,7 @@ export const COURSES: Course[] = [
       { n: 5, title: "Mid-match adjustments", detail: "Reading the score and momentum to change what isn't working." },
       { n: 6, title: "Closing the match", detail: "Serving it out and returning to break with margin, not hope." },
     ],
-    image: "/images/hero-1.jpg",
+    image: "/images/archive-federer.jpg",
   },
 ];
 

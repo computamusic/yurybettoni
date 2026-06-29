@@ -62,8 +62,8 @@ export function ProgramFinder() {
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-bone-deep md:aspect-auto">
                 <Image
-                  src={course.image}
-                  alt={course.title}
+                  src="/images/hero-action.png"
+                  alt="Yury Bettoni training on court"
                   fill
                   sizes="(max-width: 768px) 100vw, 40vw"
                   className="graded object-cover"

@@ -9,8 +9,8 @@ const TIERS = [
     action: "Free",
     href: "#",
     note: "Start here. The work, in your inbox.",
-    img: "/images/about-yury.jpg",
-    alt: "Yury Bettoni, portrait",
+    img: "/images/press/biofile.jpg",
+    alt: "Yury Bettoni with Nick Bollettieri",
   },
   {
     n: "02",
@@ -18,8 +18,8 @@ const TIERS = [
     action: "Buy",
     href: "#courses",
     note: "The method, on demand.",
-    img: "/images/stroke-poster.jpg",
-    alt: "A stroke broken down, frame by frame",
+    img: "/images/press/tvmoda.jpg",
+    alt: "Yury Bettoni training on court",
   },
   {
     n: "03",
@@ -27,8 +27,8 @@ const TIERS = [
     action: "Inquire",
     href: "#coaching",
     note: "Time on court with Yury.",
-    img: "/images/hero-1.jpg",
-    alt: "Yury Bettoni on court",
+    img: "/images/archive-volkl.jpg",
+    alt: "Yury Bettoni striking a backhand",
   },
   {
     n: "04",
