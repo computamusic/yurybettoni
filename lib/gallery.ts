@@ -102,3 +102,35 @@ export function colorVariantsFor(prefix: string): ColorVariant[] {
   }
   return out;
 }
+
+function labelOf(token: string | null): string {
+  return PALETTE.find((p) => p.token === token)?.label ?? "";
+}
+
+// ── Studio band ───────────────────────────────────────────────────────────
+// An ordered row of `${prefix}-studio-<colour>-<left|center|right>.*` shots for
+// the expanding hover banner. Position in the filename sets the slot, so the
+// row reads left→centre→right regardless of file order on disk.
+
+export type StudioPanel = { token: string; label: string; src: string };
+
+const POSITIONS = ["left", "center", "centre", "right"];
+const slot = (p: string) => (p === "centre" ? 1 : POSITIONS.indexOf(p));
+
+export function studioBandFor(prefix: string): StudioPanel[] {
+  return listDir()
+    .filter(
+      (f) =>
+        f.toLowerCase().startsWith(`${prefix}-studio-`) &&
+        /\.(jpe?g|png|webp|avif)$/i.test(f),
+    )
+    .map((f) => {
+      const segs = f.replace(/\.[a-z0-9]+$/i, "").toLowerCase().split("-");
+      const pos = POSITIONS.find((p) => segs.includes(p)) ?? "";
+      const token = colourOf(f);
+      return { token: token ?? "", label: labelOf(token), src: `/images/products/${f}`, pos };
+    })
+    .filter((p) => p.pos !== "")
+    .sort((a, b) => slot(a.pos) - slot(b.pos))
+    .map(({ token, label, src }) => ({ token, label, src }));
+}

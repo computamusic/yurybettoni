@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { useCallback, useState } from "react";
 import { Chevron } from "@/components/ui/Chevron";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { DiscoveryModal, type Discovery } from "@/components/home/DiscoveryModal";
 
 const PILLARS = [
   {
@@ -9,6 +12,7 @@ const PILLARS = [
     title: "The Athlete",
     sub: "The proof",
     body: "Bollettieri to the pro tour to the players' box of champions. The credibility, the story, the philosophy.",
+    detail: "A life shaped in the company of Federer, Pierce, Safin, Ríos and the coaches who changed the modern game.",
     href: "/athlete",
     img: "/images/archive-federer.jpg",
     alt: "A young Yury Bettoni with fellow players in the late nineties",
@@ -18,6 +22,7 @@ const PILLARS = [
     title: "The Legacy",
     sub: "The heart",
     body: "The Alessandra Bettoni Foundation. A mother's gift, given forward to young people in Ethiopia and Tanzania.",
+    detail: "Tennis opens the first door. Education, consistency and community are what keep it open.",
     href: "/foundation",
     img: "/images/legacy-africa.jpg",
     alt: "A family in Africa, from the Bettoni archive",
@@ -27,6 +32,7 @@ const PILLARS = [
     title: "The Work",
     sub: "For you",
     body: "Courses, coaching, speaking and events. The method that built a career — made available to yours.",
+    detail: "The Y-System turns decades of movement, coaching and performance into a language players can actually use.",
     href: "/work",
     img: "/images/hero-action.png",
     alt: "Yury Bettoni training on court",
@@ -34,6 +40,9 @@ const PILLARS = [
 ];
 
 export function PillarRouter() {
+  const [active, setActive] = useState<Discovery | null>(null);
+  const close = useCallback(() => setActive(null), []);
+
   return (
     <section id="paths" className="scroll-mt-20 border-t border-line bg-bone">
       <div className="mx-auto max-w-(--max-content) px-5 py-24 md:px-8 md:py-32">
@@ -50,9 +59,22 @@ export function PillarRouter() {
         <RevealGroup className="mt-16 grid gap-6 md:grid-cols-3">
           {PILLARS.map((p) => (
             <RevealItem key={p.href}>
-              <Link
-                href={p.href}
-                className="group block border-b border-line pb-6 transition-colors"
+              <button
+                type="button"
+                aria-haspopup="dialog"
+                onClick={() =>
+                  setActive({
+                    eyebrow: `${p.n} — ${p.sub}`,
+                    title: p.title,
+                    body: p.body,
+                    detail: p.detail,
+                    image: p.img,
+                    imageAlt: p.alt,
+                    href: p.href,
+                    cta: `Enter ${p.title.toLowerCase()}`,
+                  })
+                }
+                className="group block w-full cursor-pointer border-b border-line pb-6 text-left transition-colors"
               >
                 <div className="relative aspect-[4/5] overflow-hidden bg-bone-deep">
                   <Image
@@ -76,6 +98,12 @@ export function PillarRouter() {
                   <span className="eyebrow absolute bottom-4 right-4 text-light/90">
                     {p.sub}
                   </span>
+                  <span className="absolute bottom-4 left-4 flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-light/80 transition-colors group-hover:text-light">
+                    Open story
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full border border-light/40 text-sm transition-transform duration-300 group-hover:rotate-90 group-hover:border-light">
+                      +
+                    </span>
+                  </span>
                 </div>
                 <div className="mt-6 flex items-start justify-between gap-4">
                   <div>
@@ -90,11 +118,12 @@ export function PillarRouter() {
                     <Chevron />
                   </span>
                 </div>
-              </Link>
+              </button>
             </RevealItem>
           ))}
         </RevealGroup>
       </div>
+      <DiscoveryModal item={active} onClose={close} />
     </section>
   );
 }

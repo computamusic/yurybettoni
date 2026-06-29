@@ -9,7 +9,7 @@ export function CartButton({ className = "" }: { className?: string }) {
       type="button"
       onClick={open}
       aria-label={`Open bag${count ? `, ${count} item${count > 1 ? "s" : ""}` : ""}`}
-      className={`relative inline-flex h-9 w-9 items-center justify-center text-ink transition-colors hover:text-clay ${className}`}
+      className={`relative inline-flex h-9 w-9 items-center justify-center text-inherit transition-colors hover:text-clay ${className}`}
     >
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
         <path d="M6 7h12l-1 13H7L6 7Z" strokeLinejoin="round" />

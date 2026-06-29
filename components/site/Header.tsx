@@ -44,6 +44,13 @@ export function Header() {
 
   const solidHeader = solid || open;
 
+  // At the very top, the header floats over each page's full-bleed dark hero,
+  // so its controls read light. Once the solid bar appears (or on the few
+  // light-topped pages), they flip to ink. In dark theme everything is light
+  // already, so this only changes the light-theme top state.
+  const lightTop = pathname === "/subscribe" || pathname === "/contact";
+  const onDark = !solidHeader && !lightTop;
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${
@@ -52,7 +59,19 @@ export function Header() {
           : "border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-(--max-content) items-center justify-between px-5 md:px-8">
+      {/* Top scrim — darkens the hero behind the floating nav so the light
+          text reads clearly. Fades out once the solid bar takes over. */}
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute inset-x-0 top-0 h-32 transition-opacity duration-500 ${
+          onDark ? "opacity-100" : "opacity-0"
+        }`}
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(8,6,3,0.7) 0%, rgba(8,6,3,0.4) 40%, rgba(8,6,3,0) 100%)",
+        }}
+      />
+      <div className="relative z-10 mx-auto flex h-20 max-w-(--max-content) items-center justify-between px-5 md:px-8">
         <Link href="/" aria-label="Yury Bettoni — home" className="flex items-center">
           <Image
             src="/images/yb-logo.png"
@@ -60,7 +79,9 @@ export function Header() {
             width={1517}
             height={1091}
             priority
-            className="h-9 w-auto dark:invert md:h-10"
+            className={`h-9 w-auto transition-[filter] duration-300 md:h-10 ${
+              onDark ? "invert" : "dark:invert"
+            }`}
           />
         </Link>
 
@@ -77,14 +98,20 @@ export function Header() {
                 onMouseEnter={() => setHovered(n.href)}
                 aria-current={active === n.href ? "page" : undefined}
                 className={`relative rounded-full px-4 py-2 text-[0.8rem] font-semibold uppercase tracking-[0.16em] transition-colors duration-200 ${
-                  on ? "text-ink" : "text-ink-soft hover:text-ink"
+                  on
+                    ? onDark
+                      ? "text-light"
+                      : "text-ink"
+                    : onDark
+                      ? "text-light/70 hover:text-light"
+                      : "text-ink-soft hover:text-ink"
                 }`}
               >
                 {on && (
                   <motion.span
                     layoutId="nav-pill"
                     aria-hidden
-                    className="absolute inset-0 rounded-full bg-clay/12"
+                    className={`absolute inset-0 rounded-full ${onDark ? "bg-light/10" : "bg-clay/12"}`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={pillSpring}
@@ -99,12 +126,20 @@ export function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div
+          className={`flex items-center gap-2 transition-colors duration-300 sm:gap-3 ${
+            onDark ? "text-light" : "text-ink"
+          }`}
+        >
           <CartButton />
           <ThemeToggle />
           <Link
             href="/subscribe"
-            className="hidden bg-ink px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-bone transition-colors hover:bg-clay sm:inline-block"
+            className={`hidden px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] transition-colors sm:inline-block ${
+              onDark
+                ? "border border-light/40 text-light hover:bg-light hover:text-ink"
+                : "border border-ink bg-ink text-bone hover:border-clay hover:bg-clay"
+            }`}
           >
             Subscribe
           </Link>
@@ -115,8 +150,8 @@ export function Header() {
             onClick={() => setOpen((o) => !o)}
             className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
           >
-            <span className={`h-px w-6 bg-ink transition-transform ${open ? "translate-y-[3.5px] rotate-45" : ""}`} />
-            <span className={`h-px w-6 bg-ink transition-transform ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`} />
+            <span className={`h-px w-6 transition-transform ${onDark ? "bg-light" : "bg-ink"} ${open ? "translate-y-[3.5px] rotate-45" : ""}`} />
+            <span className={`h-px w-6 transition-transform ${onDark ? "bg-light" : "bg-ink"} ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`} />
           </button>
         </div>
       </div>
@@ -130,7 +165,7 @@ export function Header() {
             transition={{ duration: 0.25 }}
             className="fixed inset-0 z-30 h-[100svh] bg-bone lg:hidden"
           >
-            <nav className="flex h-full flex-col px-5 pb-10 pt-28">
+            <nav className="flex h-full flex-col overflow-y-auto px-5 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-24 sm:pt-28">
               {NAV.map((n, i) => {
                 const isActive = active === n.href;
                 return (
@@ -144,7 +179,7 @@ export function Header() {
                       href={n.href}
                       onClick={() => setOpen(false)}
                       aria-current={isActive ? "page" : undefined}
-                      className={`flex items-center gap-3 border-b border-line py-5 font-display text-3xl transition-colors ${
+                      className={`flex items-center gap-3 border-b border-line py-4 font-display text-[1.7rem] transition-colors sm:py-5 sm:text-3xl ${
                         isActive ? "text-clay" : "text-ink"
                       }`}
                     >
@@ -160,7 +195,7 @@ export function Header() {
                   </motion.div>
                 );
               })}
-              <div className="mt-8 flex items-center gap-4">
+              <div className="mt-7 flex flex-col gap-3 min-[380px]:flex-row min-[380px]:items-center">
                 <Link
                   href="/subscribe"
                   onClick={() => setOpen(false)}

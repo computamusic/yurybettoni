@@ -9,7 +9,7 @@ import { HeroCrossfade } from "@/components/shop/HeroCrossfade";
 import { VariantPurchase } from "@/components/shop/VariantPurchase";
 import type { Product } from "@/lib/products";
 import { contentFor } from "@/lib/product-content";
-import { colorVariantsFor, galleryFor, heroFor, heroSetFor } from "@/lib/gallery";
+import { colorVariantsFor, galleryFor, heroFor, heroSetFor, studioBandFor } from "@/lib/gallery";
 
 const FALLBACK_HERO = "/images/clay-texture.png";
 
@@ -17,11 +17,15 @@ export function RichProductDetail({ product }: { product: Product }) {
   const content = contentFor(product.slug);
   const gallery = content ? galleryFor(content.galleryPrefix) : [];
   const variants = content ? colorVariantsFor(content.galleryPrefix) : [];
+  const studioBand = content ? studioBandFor(content.galleryPrefix) : [];
   const heroSet = content ? heroSetFor(content.galleryPrefix) : [];
   const heroImg = (content && heroFor(content.galleryPrefix)) || FALLBACK_HERO;
+  const closingImg =
+    product.slug === "gosymba-duffel"
+      ? "/images/products/duffel-sunset-grey.png"
+      : null;
   const images = [product.image, ...gallery];
 
-  const imgFit = product.fit === "contain" ? "object-contain p-8" : "object-cover";
   const hasQualityImgs = gallery.length >= 3;
   const sizeImg = gallery.length > 0 ? gallery[gallery.length - 1] : null;
   const lookbook = gallery.slice(0, 3);
@@ -112,7 +116,7 @@ export function RichProductDetail({ product }: { product: Product }) {
           <section className="bg-bone">
             <div className="mx-auto max-w-(--max-content) px-5 py-24 md:px-8 md:py-32">
               <Reveal className="max-w-2xl">
-                <p className="eyebrow text-clay">Why it's worth it</p>
+                <p className="eyebrow text-clay">Why it&apos;s worth it</p>
                 <h2
                   className="mt-5 font-display font-medium leading-[1.05] tracking-[-0.015em] text-ink"
                   style={{ fontSize: "var(--text-display)" }}
@@ -236,6 +240,41 @@ export function RichProductDetail({ product }: { product: Product }) {
             </section>
           )}
 
+          {/* ── Colourway band (expanding studio row) ──────── */}
+          {studioBand.length === 3 && (
+            <section className="bg-night">
+              <Reveal>
+                <div className="flex h-[54svh] min-h-[340px] w-full snap-x snap-mandatory gap-[3px] overflow-x-auto bg-night md:h-[60svh] md:overflow-hidden">
+                  {studioBand.map((p) => (
+                    <div
+                      key={p.src}
+                      className="group relative min-w-[82vw] shrink-0 snap-center overflow-hidden transition-[flex-grow] duration-500 ease-out md:min-w-0 md:grow md:basis-0 md:hover:grow-[2.3]"
+                    >
+                      <Image
+                        src={p.src}
+                        alt={`${product.name} — ${p.label}`}
+                        fill
+                        sizes="100vw"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                      />
+                      <div
+                        aria-hidden
+                        className="absolute inset-0 bg-gradient-to-t from-night/75 via-transparent to-transparent"
+                      />
+                      {p.label && (
+                        <div className="absolute bottom-0 left-0 p-5 md:p-7">
+                          <p className="eyebrow text-light/80 transition-colors duration-500 group-hover:text-light">
+                            {p.label}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </section>
+          )}
+
           {/* ── Specs + FAQ ────────────────────────────────── */}
           <section className="border-t border-line bg-bone-deep">
             <div className="mx-auto grid max-w-(--max-content) gap-16 px-5 py-24 md:px-8 md:py-28 lg:grid-cols-2 lg:gap-24">
@@ -273,15 +312,31 @@ export function RichProductDetail({ product }: { product: Product }) {
       )}
 
       {/* ── Closing CTA ────────────────────────────────────── */}
-      <section className="bg-bone">
-        <div className="mx-auto max-w-(--max-content) px-5 py-24 text-center md:px-8 md:py-28">
+      <section className={`relative overflow-hidden ${closingImg ? "bg-night" : "bg-bone"}`}>
+        {closingImg && (
+          <>
+            <Image
+              src={closingImg}
+              alt=""
+              aria-hidden
+              fill
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-night/50"
+            />
+          </>
+        )}
+        <div className="relative mx-auto max-w-(--max-content) px-5 py-24 text-center md:px-8 md:py-28">
           <Reveal>
-            <p className="eyebrow text-clay">Wear the lion</p>
-            <h2 className="mx-auto mt-5 max-w-xl font-display font-medium leading-[1.06] tracking-[-0.015em] text-ink" style={{ fontSize: "var(--text-display)" }}>
+            <p className={`eyebrow ${closingImg ? "text-light/75" : "text-clay"}`}>Wear the lion</p>
+            <h2 className={`mx-auto mt-5 max-w-xl font-display font-medium leading-[1.06] tracking-[-0.015em] ${closingImg ? "text-light" : "text-ink"}`} style={{ fontSize: "var(--text-display)" }}>
               Add it to your bag.
             </h2>
             <div className="mt-9 flex justify-center">
-              <ForwardLink href="#top">Back to the top</ForwardLink>
+              <ForwardLink href="#top" tone={closingImg ? "bone" : "ink"}>Back to the top</ForwardLink>
             </div>
           </Reveal>
         </div>

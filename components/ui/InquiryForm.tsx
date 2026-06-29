@@ -104,7 +104,7 @@ export function InquiryForm({
       <div>
         <button
           type="submit"
-          className="chev-host inline-flex items-center gap-3 bg-ink px-7 py-4 text-[0.78rem] font-semibold uppercase tracking-[0.18em] text-bone transition-colors hover:bg-clay"
+          className="chev-host inline-flex w-full items-center justify-center gap-3 bg-ink px-7 py-4 text-[0.78rem] font-semibold uppercase tracking-[0.18em] text-bone transition-colors hover:bg-clay sm:w-auto"
         >
           {submitLabel}
           <Chevron />

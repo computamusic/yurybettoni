@@ -30,7 +30,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       type="button"
       onClick={toggle}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className={`inline-flex h-9 w-9 items-center justify-center text-ink transition-colors hover:text-clay ${className}`}
+      className={`inline-flex h-9 w-9 items-center justify-center text-inherit transition-colors hover:text-clay ${className}`}
     >
       {/* Render a stable icon until mounted to avoid hydration mismatch */}
       <svg

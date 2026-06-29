@@ -32,7 +32,7 @@ export function ProgramFinder() {
           </h2>
         </Reveal>
 
-        <div className="mt-10 flex flex-wrap gap-3">
+        <div className="mt-10 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
           {FOCUS.map((f) => {
             const on = f.slug === slug;
             return (
@@ -40,7 +40,7 @@ export function ProgramFinder() {
                 key={f.slug}
                 onClick={() => setSlug(f.slug)}
                 aria-pressed={on}
-                className={`border px-5 py-3 text-[0.74rem] font-semibold uppercase tracking-[0.14em] transition-colors ${
+                className={`min-h-12 border px-3 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.12em] transition-colors sm:px-5 sm:text-[0.74rem] sm:tracking-[0.14em] ${
                   on ? "border-clay bg-clay text-bone" : "border-line text-ink-soft hover:border-ink/40"
                 }`}
               >
@@ -69,7 +69,7 @@ export function ProgramFinder() {
                   className="graded object-cover"
                 />
               </div>
-              <div className="p-8 md:p-10">
+              <div className="p-6 sm:p-8 md:p-10">
                 <p className="eyebrow text-clay">
                   {slug ? "We'd start you with" : "Most people start here"} · {course.level}
                 </p>
@@ -84,7 +84,7 @@ export function ProgramFinder() {
                 </p>
                 <Link
                   href={`/work/courses/${course.slug}`}
-                  className="chev-host mt-7 inline-flex items-center gap-3 bg-ink px-7 py-4 text-[0.78rem] font-semibold uppercase tracking-[0.18em] text-bone transition-colors hover:bg-clay"
+                  className="chev-host mt-7 inline-flex w-full items-center justify-center gap-3 bg-ink px-6 py-4 text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-bone transition-colors hover:bg-clay sm:w-auto sm:px-7 sm:text-[0.78rem] sm:tracking-[0.18em]"
                 >
                   View the course
                   <Chevron />

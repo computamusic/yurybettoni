@@ -34,8 +34,8 @@ export function Footer() {
   return (
     <footer className="border-t border-light/10 bg-night text-light">
       <div className="mx-auto max-w-(--max-content) px-5 py-20 md:px-8">
-        <div className="grid gap-14 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
-          <div>
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 lg:grid-cols-[1.4fr_repeat(3,1fr)] lg:gap-14">
+          <div className="col-span-2 border-b border-light/10 pb-10 lg:col-span-1 lg:border-0 lg:pb-0">
             <p className="font-display text-2xl">Yury Bettoni</p>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-light/55">
               The game, the legacy, and the work — one world.
@@ -70,7 +70,7 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col gap-4 border-t border-light/10 pt-8 text-xs text-light/45 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Yury Bettoni. All rights reserved.</p>
-          <div className="flex gap-6 uppercase tracking-[0.14em]">
+          <div className="flex flex-wrap gap-x-6 gap-y-3 uppercase tracking-[0.14em]">
             <a href="https://instagram.com" className="underline-draw hover:text-light">Instagram</a>
             <a href="https://youtube.com" className="underline-draw hover:text-light">YouTube</a>
             <a href="https://tiktok.com" className="underline-draw hover:text-light">TikTok</a>

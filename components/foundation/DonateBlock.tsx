@@ -43,12 +43,12 @@ export function DonateBlock() {
         e.preventDefault();
         setDone(true);
       }}
-      className="rounded-sm border border-line-soft bg-bone p-7"
+      className="rounded-sm border border-line-soft bg-bone p-5 sm:p-7"
     >
       <span className="text-xs font-semibold uppercase tracking-[0.16em] text-mute">
         Choose an amount
       </span>
-      <div className="mt-4 grid grid-cols-4 gap-2">
+      <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
         {PRESETS.map((p) => {
           const active = amount === p;
           return (

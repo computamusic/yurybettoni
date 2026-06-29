@@ -67,7 +67,7 @@ export function ProductGallery({
       </button>
 
       {images.length > 1 && (
-        <div className="mt-3 grid grid-cols-5 gap-3">
+        <div className="-mx-5 mt-3 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-1 sm:mx-0 sm:grid sm:grid-cols-5 sm:overflow-visible sm:px-0 sm:pb-0">
           {images.map((img, i) => (
             <button
               key={img}
@@ -75,7 +75,7 @@ export function ProductGallery({
               onClick={() => setActive(i)}
               aria-label={`View image ${i + 1}`}
               aria-current={i === active}
-              className={`relative aspect-square overflow-hidden bg-bone-deep transition-opacity ${
+              className={`relative aspect-square w-[4.75rem] shrink-0 snap-start overflow-hidden bg-bone-deep transition-opacity sm:w-auto ${
                 i === active ? "ring-1 ring-ink" : "opacity-70 hover:opacity-100"
               }`}
             >

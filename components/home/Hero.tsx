@@ -42,7 +42,7 @@ export function Hero() {
   return (
     <section className="relative w-full overflow-hidden bg-bone">
       {/* Slideshow — slow cross-fade */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-x-0 top-0 h-[60svh] md:inset-0 md:h-auto">
         {SLIDES.map((s, i) => (
           <Image
             key={s.src}
@@ -51,7 +51,7 @@ export function Hero() {
             fill
             priority={i === 0}
             sizes="100vw"
-            className="graded object-cover object-[68%_center] transition-opacity duration-[1600ms] ease-in-out"
+            className="graded object-cover object-[66%_center] transition-opacity duration-[1600ms] ease-in-out"
             style={{ opacity: i === idx ? 1 : 0 }}
           />
         ))}
@@ -60,8 +60,8 @@ export function Hero() {
       {/* Fade to background — toward the text. Horizontal on tablet/desktop, vertical on mobile. */}
       <div
         aria-hidden
-        className="absolute inset-0 md:hidden"
-        style={{ background: "linear-gradient(0deg, var(--color-bone) 14%, rgba(0,0,0,0) 64%)" }}
+        className="absolute inset-x-0 top-0 h-[60svh] md:hidden"
+        style={{ background: "linear-gradient(0deg, var(--color-bone) 0%, color-mix(in srgb, var(--color-bone) 82%, transparent) 18%, rgba(0,0,0,0) 58%)" }}
       />
       <div
         aria-hidden
@@ -79,7 +79,7 @@ export function Hero() {
       />
 
       {/* Content */}
-      <div className="relative mx-auto flex min-h-[100svh] max-w-(--max-content) flex-col justify-end px-5 pb-16 pt-28 md:justify-center md:px-8 md:pb-0">
+      <div className="relative mx-auto flex max-w-(--max-content) flex-col px-5 pb-14 pt-[50svh] md:min-h-[100svh] md:justify-center md:px-8 md:pb-0 md:pt-28">
         <motion.div initial="hidden" animate="show" variants={rise(0.05)}>
           <span className="eyebrow text-clay">Former pro · Coach to champions · Builder · Son</span>
         </motion.div>

@@ -13,7 +13,7 @@ export function AmbientVideo({
   objectPosition = "center",
 }: {
   src: string;
-  poster: string;
+  poster?: string;
   className?: string;
   objectPosition?: string;
 }) {

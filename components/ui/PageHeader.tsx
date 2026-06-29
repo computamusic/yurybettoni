@@ -31,25 +31,27 @@ export function PageHeader({
   });
 
   return (
-    <section className="relative flex min-h-[80svh] items-end overflow-hidden bg-night pt-20">
-      <Image
-        src={image}
-        alt={imageAlt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-        style={{ objectPosition: imagePosition }}
-      />
+    <section className="relative overflow-hidden bg-night pt-20 md:flex md:min-h-[80svh] md:items-end">
+      <div className="absolute inset-x-0 top-0 h-[52svh] overflow-hidden md:inset-0 md:h-auto">
+        <Image
+          src={image}
+          alt={imageAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: imagePosition }}
+        />
+      </div>
       <div
         aria-hidden
-        className="absolute inset-0"
+        className="absolute inset-x-0 top-0 h-[52svh] md:inset-0 md:h-auto"
         style={{
           background:
-            "linear-gradient(180deg, rgba(13,10,6,0.5) 0%, rgba(13,10,6,0.12) 35%, rgba(13,10,6,0.55) 72%, rgba(13,10,6,0.92) 100%)",
+            "linear-gradient(180deg, rgba(13,10,6,0.38) 0%, rgba(13,10,6,0.08) 42%, rgba(13,10,6,0.96) 100%)",
         }}
       />
-      <div className="relative z-10 mx-auto w-full max-w-(--max-content) px-5 pb-16 md:px-8 md:pb-24">
+      <div className="relative z-10 mx-auto mt-[38svh] w-full max-w-(--max-content) px-5 pb-14 pt-16 md:mt-0 md:px-8 md:pb-24 md:pt-0">
         <motion.p initial="hidden" animate="show" variants={rise(0.05)} className="eyebrow" style={{ color: accent }}>
           {eyebrow}
         </motion.p>
@@ -67,7 +69,7 @@ export function PageHeader({
             initial="hidden"
             animate="show"
             variants={rise(0.35)}
-            className="mt-7 max-w-xl text-lg leading-relaxed text-light/80"
+            className="mt-6 max-w-xl text-base leading-relaxed text-light/75 md:mt-7 md:text-lg md:text-light/80"
           >
             {lead}
           </motion.p>
@@ -77,7 +79,7 @@ export function PageHeader({
             initial="hidden"
             animate="show"
             variants={rise(0.5)}
-            className="mt-9 flex flex-wrap gap-x-8 gap-y-3"
+            className="mt-8 flex flex-wrap gap-x-7 gap-y-3 border-t border-light/15 pt-6 md:mt-9 md:border-0 md:pt-0"
           >
             {anchors.map((a) => (
               <a

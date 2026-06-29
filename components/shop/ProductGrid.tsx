@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Chevron } from "@/components/ui/Chevron";
-import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { Reveal } from "@/components/ui/Reveal";
 import { PRODUCTS, type Product } from "@/lib/products";
 
 const CATEGORIES = ["All", ...Array.from(new Set(PRODUCTS.map((p) => p.category)))];
@@ -56,9 +56,9 @@ export function ProductGrid() {
           })}
         </div>
 
-        <RevealGroup key={active} className="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((p) => (
-            <RevealItem key={p.slug}>
+            <div key={p.slug}>
               <Link
                 href={`/shop/product/${p.slug}`}
                 className="group block"
@@ -94,9 +94,9 @@ export function ProductGrid() {
                   </div>
                 </div>
               </Link>
-            </RevealItem>
+            </div>
           ))}
-        </RevealGroup>
+        </div>
       </div>
     </section>
   );

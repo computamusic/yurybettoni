@@ -8,7 +8,10 @@ import {
   useReducedMotion,
 } from "motion/react";
 
-// Scroll-scrubbed video: the forehand plays forward as you scroll the section.
+const SCRUB_DURATION = 2.7;
+const SCRUB_END_GUARD = 0.02;
+
+// Scroll-scrubbed video: underwater movement plays forward with the page.
 export function ScrollStroke() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -37,7 +40,10 @@ export function ScrollStroke() {
 
     const unsub = scrollYProgress.on("change", (p) => {
       const d = v.duration;
-      if (d && isFinite(d)) target = Math.max(0, Math.min(d - 0.05, p * d));
+      if (d && isFinite(d)) {
+        const clipEnd = Math.min(SCRUB_DURATION, d);
+        target = Math.max(0, Math.min(clipEnd - SCRUB_END_GUARD, p * clipEnd));
+      }
     });
 
     const loop = () => {
@@ -68,9 +74,8 @@ export function ScrollStroke() {
           muted
           playsInline
           preload="auto"
-          poster="/images/stroke-poster.jpg"
         >
-          <source src="/video/stroke.mp4" type="video/mp4" />
+          <source src="/video/slowmo-underwater.mp4" type="video/mp4" />
         </video>
 
         <div
@@ -86,13 +91,13 @@ export function ScrollStroke() {
           style={reduce ? undefined : { opacity: textOpacity, y: textY }}
           className="relative z-10 max-w-2xl px-5 text-center"
         >
-          <p className="eyebrow text-clay">The strike</p>
+          <p className="eyebrow text-clay">Movement, revealed</p>
           <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-[-0.01em] text-light md:text-6xl">
-            It all starts with contact.
+            Before speed, there is control.
           </h2>
           <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-light/80">
-            Every venture, every season, every act of giving — it began the moment
-            racquet met ball.
+            Under resistance, every detail of mobility, stability and velocity becomes
+            visible. Slow motion turns the method into something you can see.
           </p>
         </motion.div>
 

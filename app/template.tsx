@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion, useReducedMotion } from "motion/react";
 import { easeOut, easeLine, easeSoft } from "@/lib/motion";
@@ -13,7 +14,14 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const reduce = useReducedMotion();
   const initial = firstLoad;
-  if (typeof window !== "undefined") firstLoad = false;
+
+  // Flip the flag AFTER commit, never during render: mutating module state
+  // mid-render makes React's dev double-render read different values on its
+  // two passes, so the committed HTML stops matching the server's → hydration
+  // mismatch. An effect runs once, post-hydration, where this is safe.
+  useEffect(() => {
+    firstLoad = false;
+  }, []);
 
   if (initial) return <>{children}</>;
 

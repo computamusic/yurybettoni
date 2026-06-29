@@ -41,7 +41,7 @@ export function ImpactCalculator() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="border border-line bg-bone p-8 md:p-10">
+            <div className="border border-line bg-bone p-5 sm:p-8 md:p-10">
               <div className="flex items-baseline justify-between">
                 <span className="eyebrow text-mute">Your gift</span>
                 <span className="font-mono text-4xl tabular-nums text-ink md:text-5xl">
