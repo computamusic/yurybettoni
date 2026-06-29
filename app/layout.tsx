@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { CartProvider } from "@/components/shop/Cart";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -49,10 +50,12 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <ScrollProgress />
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+        <CartProvider>
+          <ScrollProgress />
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

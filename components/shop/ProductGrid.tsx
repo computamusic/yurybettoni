@@ -69,7 +69,9 @@ export function ProductGrid() {
                     alt={p.name}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="graded object-contain p-8 transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    className={`graded transition-transform duration-700 ease-out group-hover:scale-[1.04] ${
+                      p.fit === "contain" ? "object-contain p-8" : "object-cover"
+                    }`}
                   />
                   {p.cause && (
                     <span className="eyebrow absolute left-4 top-4 rounded-full bg-clay/90 px-3 py-1 text-[0.6rem] text-light">

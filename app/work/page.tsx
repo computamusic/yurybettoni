@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { OfferLadder } from "@/components/work/OfferLadder";
+import { ProgramFinder } from "@/components/work/ProgramFinder";
 import { CoursesGrid } from "@/components/work/CoursesGrid";
 import { CoachingSection } from "@/components/work/CoachingSection";
 import { SpeakingSection } from "@/components/work/SpeakingSection";
@@ -31,6 +32,7 @@ export default function WorkPage() {
         ]}
       />
       <OfferLadder />
+      <ProgramFinder />
       <CoursesGrid />
       <CoachingSection />
       <SpeakingSection />

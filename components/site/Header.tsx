@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { CartButton } from "@/components/shop/CartButton";
 
 const NAV = [
   { label: "Athlete", href: "/athlete" },
@@ -62,7 +63,8 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <CartButton />
           <ThemeToggle />
           <Link
             href="/subscribe"

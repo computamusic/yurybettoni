@@ -58,7 +58,7 @@ export default async function ProductPage({
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="graded object-contain p-10"
+                className={product.fit === "contain" ? "graded object-contain p-10" : "graded object-cover"}
               />
               {product.cause && (
                 <span className="eyebrow absolute left-5 top-5 rounded-full bg-clay/90 px-3 py-1 text-[0.6rem] text-light">
@@ -84,7 +84,7 @@ export default async function ProductPage({
                 {product.blurb}
               </p>
 
-              <AddToCart sizes={product.sizes} />
+              <AddToCart product={product} />
 
               {product.cause && (
                 <p className="mt-8 max-w-md border-l-2 border-clay pl-4 text-sm leading-relaxed text-mute">

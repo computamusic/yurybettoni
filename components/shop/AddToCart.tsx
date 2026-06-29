@@ -2,12 +2,16 @@
 
 import { useState } from "react";
 import { Chevron } from "@/components/ui/Chevron";
+import { useCart } from "@/components/shop/Cart";
+import type { Product } from "@/lib/products";
 
-export function AddToCart({ sizes }: { sizes?: string[] }) {
+export function AddToCart({ product }: { product: Product }) {
+  const { add } = useCart();
   const [size, setSize] = useState<string | null>(null);
-  const [added, setAdded] = useState(false);
   const [error, setError] = useState(false);
+  const [added, setAdded] = useState(false);
 
+  const sizes = product.sizes;
   const needsSize = !!sizes && sizes.length > 0;
 
   function handleAdd() {
@@ -16,34 +20,18 @@ export function AddToCart({ sizes }: { sizes?: string[] }) {
       return;
     }
     setError(false);
-    setAdded(true);
-  }
-
-  if (added) {
-    return (
-      <div className="mt-10 border-t border-line pt-8">
-        <div className="flex items-center gap-3 bg-bone-deep px-6 py-5">
-          <span className="text-clay">
-            <Chevron />
-          </span>
-          <div>
-            <p className="font-display text-lg font-medium text-ink">Added to bag</p>
-            <p className="mt-1 text-sm text-mute">
-              {needsSize ? `Size ${size} · ` : ""}A confirmation would follow at checkout.
-            </p>
-          </div>
-        </div>
-        <button
-          onClick={() => {
-            setAdded(false);
-            setSize(null);
-          }}
-          className="mt-5 text-[0.74rem] font-semibold uppercase tracking-[0.18em] text-mute underline-draw hover:text-ink"
-        >
-          Choose again
-        </button>
-      </div>
+    add(
+      {
+        slug: product.slug,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        fit: product.fit,
+        size: size ?? undefined,
+      },
+      1,
     );
+    setAdded(true);
   }
 
   return (
@@ -67,12 +55,11 @@ export function AddToCart({ sizes }: { sizes?: string[] }) {
                   onClick={() => {
                     setSize(s);
                     setError(false);
+                    setAdded(false);
                   }}
                   aria-pressed={on}
                   className={`min-w-12 border px-4 py-3 text-sm font-semibold transition-colors ${
-                    on
-                      ? "border-ink bg-ink text-bone"
-                      : "border-line text-ink-soft hover:border-ink"
+                    on ? "border-ink bg-ink text-bone" : "border-line text-ink-soft hover:border-ink"
                   }`}
                 >
                   {s}
@@ -87,9 +74,14 @@ export function AddToCart({ sizes }: { sizes?: string[] }) {
         onClick={handleAdd}
         className="chev-host mt-8 inline-flex w-full items-center justify-center gap-3 bg-ink px-8 py-4 text-[0.78rem] font-semibold uppercase tracking-[0.18em] text-bone transition-colors hover:bg-clay sm:w-auto"
       >
-        Add to bag
+        {added ? "Added — add another" : "Add to bag"}
         <Chevron />
       </button>
+      {added && (
+        <p className="mt-4 text-sm text-mute">
+          In your bag{size ? ` · size ${size}` : ""}. Open the bag any time from the header.
+        </p>
+      )}
     </div>
   );
 }

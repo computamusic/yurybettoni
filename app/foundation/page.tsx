@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { HerStory } from "@/components/foundation/HerStory";
 import { Mission } from "@/components/foundation/Mission";
 import { Impact } from "@/components/foundation/Impact";
+import { ImpactCalculator } from "@/components/foundation/ImpactCalculator";
 import { WaysToGive } from "@/components/foundation/WaysToGive";
 import { SubscribeBand } from "@/components/home/SubscribeBand";
 
@@ -32,6 +33,7 @@ export default function FoundationPage() {
       <HerStory />
       <Mission />
       <Impact />
+      <ImpactCalculator />
       <WaysToGive />
       <SubscribeBand />
     </>
