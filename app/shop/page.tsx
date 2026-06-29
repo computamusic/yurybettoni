@@ -3,6 +3,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SubscribeBand } from "@/components/home/SubscribeBand";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { BrandStory } from "@/components/shop/BrandStory";
+import { Lookbook } from "@/components/shop/Lookbook";
 import { CauseBand } from "@/components/shop/CauseBand";
 
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default function ShopPage() {
 
       <BrandStory />
       <ProductGrid />
+      <Lookbook />
       <CauseBand />
       <SubscribeBand />
     </main>

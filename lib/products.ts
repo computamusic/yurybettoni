@@ -10,6 +10,7 @@ export type Product = {
   blurb: string;
   cause?: boolean; // a share supports the Foundation
   sizes?: string[];
+  galleryPrefix?: string; // collect public/images/products/<prefix>-* as a gallery
 };
 
 const TEE_SIZES = ["S", "M", "L", "XL", "XXL"];
@@ -77,8 +78,10 @@ export const PRODUCTS: Product[] = [
     category: "Accessories",
     price: 8,
     image: "/images/products/wristbands.jpg",
-    fit: "contain",
-    blurb: "A terry wristband pair in match white. The smallest way to wear the lion.",
+    fit: "cover",
+    blurb: "A terry wristband pair in match white, embroidered with the Symba lion. The smallest way to wear it — and a quiet nod on every changeover.",
+    cause: true,
+    galleryPrefix: "wristbands",
   },
   {
     slug: "gosymba-lion-plush",

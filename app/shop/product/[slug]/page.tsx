@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Chevron } from "@/components/ui/Chevron";
 import { SubscribeBand } from "@/components/home/SubscribeBand";
 import { AddToCart } from "@/components/shop/AddToCart";
+import { ProductGallery } from "@/components/shop/ProductGallery";
 import { PRODUCTS, getProduct } from "@/lib/products";
+import { galleryFor } from "@/lib/gallery";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -34,6 +35,9 @@ export default async function ProductPage({
   const product = getProduct(slug);
   if (!product) notFound();
 
+  const extra = product.galleryPrefix ? galleryFor(product.galleryPrefix) : [];
+  const images = [product.image, ...extra.filter((i) => i !== product.image)];
+
   return (
     <main>
       <section className="bg-bone pt-20">
@@ -50,22 +54,13 @@ export default async function ProductPage({
           </Link>
 
           <div className="mt-8 grid gap-10 pb-24 md:grid-cols-2 md:gap-16 md:pb-32">
-            {/* Image */}
-            <div className="relative aspect-[4/5] overflow-hidden bg-bone-deep">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className={product.fit === "contain" ? "graded object-contain p-10" : "graded object-cover"}
-              />
-              {product.cause && (
-                <span className="eyebrow absolute left-5 top-5 rounded-full bg-clay/90 px-3 py-1 text-[0.6rem] text-light">
-                  Supports the Foundation
-                </span>
-              )}
-            </div>
+            {/* Gallery */}
+            <ProductGallery
+              images={images}
+              alt={product.name}
+              fit={product.fit}
+              cause={product.cause}
+            />
 
             {/* Details */}
             <div className="md:py-4">
