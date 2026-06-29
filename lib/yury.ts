@@ -96,3 +96,77 @@ export const FEDERER_STORY = {
   title: "The night he beat Federer — on a PlayStation",
   text: "At the Muratti Time event in Milan, a young Roger Federer turned from the console and said, “How about we play tennis?” Yury picked Agassi. Federer picked himself. Sitting beside the player he was busy beating on screen, Yury remembers it as the most surreal match of his life.",
 };
+
+// The Y-System — his proprietary method, built on the "3 Y's".
+// From the original yurybettoni.com Y-System pages.
+export const THREE_YS = [
+  {
+    key: "mobilitY",
+    title: "Mobility",
+    short: "Move freely, then move fast.",
+    body: "Range, flexibility and coordination — the body's ability to get into position before the ball arrives. The foundation everything else is built on.",
+  },
+  {
+    key: "stabilitY",
+    title: "Stability",
+    short: "A base you can trust under load.",
+    body: "Strength, balance and control through the kinetic chain, so power has something solid to push against and the body holds its shape under pressure.",
+  },
+  {
+    key: "velocitY",
+    title: "Velocity",
+    short: "Speed, applied with intent.",
+    body: "Explosive movement, agility and conditioning — turning mobility and stability into racquet-head speed and first-step quickness on the court.",
+  },
+] as const;
+
+export const YSYSTEM_INTRO = {
+  eyebrow: "The 3 Y's",
+  title: "A visual method for moving better — on the court and off it.",
+  body: "The Y-System is Yury's own framework, built on the 3 Y's: mobilitY, stabilitY and velocitY. It reads tennis as movement first, optimising body biomechanics and the cognitive side of the game so players and coaches share one language for getting better.",
+};
+
+// The Y-System's purchasable / programmatic expressions.
+export const YSYSTEM_PROGRAMS = [
+  {
+    title: "Tennis",
+    note: "Understand the dynamics of a tennis movement through mobility, stability and velocity.",
+  },
+  {
+    title: "Training",
+    note: "A personalised regime on the Y-Base that builds the fundamentals of the 3 Y's.",
+  },
+  {
+    title: "Nutrition",
+    note: "Eating plans, intake and timing tuned to the work — the off-court half of performance.",
+  },
+  {
+    title: "Coaches",
+    note: "Y-System–certified coaches deliver fully tailored programs to each player's goals.",
+  },
+] as const;
+
+// Brands and partners that have backed or featured him (from About + Press).
+export const SPONSORS = [
+  "Dunlop",
+  "Head",
+  "Gosen",
+  "imoove",
+  "Lotto",
+  "Völkl",
+  "Peain Script",
+] as const;
+
+// Accolades and affiliations — the verifiable, the institutional, the human.
+export const ACCOLADES = [
+  { label: "Knight of Malta", note: "A lifelong commitment to giving back." },
+  {
+    label: "B.A., International Management & Economics",
+    note: "University of South Florida, 2005.",
+  },
+  { label: "USPTR-certified coach", note: "United States Professional Tennis Registry." },
+  {
+    label: "ISSA personal trainer & dietitian",
+    note: "International Sports Sciences Association.",
+  },
+] as const;

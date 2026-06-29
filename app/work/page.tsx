@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Pedigree } from "@/components/work/Pedigree";
+import { YSystem } from "@/components/work/YSystem";
 import { OfferLadder } from "@/components/work/OfferLadder";
 import { ProgramFinder } from "@/components/work/ProgramFinder";
 import { CoursesGrid } from "@/components/work/CoursesGrid";
@@ -26,6 +27,7 @@ export default function WorkPage() {
         imageAlt="Yury Bettoni on court"
         imagePosition="center 30%"
         anchors={[
+          { href: "#method", label: "The method" },
           { href: "#courses", label: "Courses" },
           { href: "#coaching", label: "Coaching" },
           { href: "#speaking", label: "Speaking" },
@@ -33,6 +35,7 @@ export default function WorkPage() {
         ]}
       />
       <Pedigree />
+      <YSystem />
       <OfferLadder />
       <ProgramFinder />
       <CoursesGrid />

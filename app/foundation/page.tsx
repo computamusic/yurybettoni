@@ -3,8 +3,10 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { HerStory } from "@/components/foundation/HerStory";
 import { TheJourney } from "@/components/foundation/TheJourney";
 import { AfricaQuote } from "@/components/foundation/AfricaQuote";
+import { FoundationFilm } from "@/components/foundation/FoundationFilm";
 import { Mission } from "@/components/foundation/Mission";
 import { Impact } from "@/components/foundation/Impact";
+import { FoundationGallery } from "@/components/foundation/FoundationGallery";
 import { ImpactCalculator } from "@/components/foundation/ImpactCalculator";
 import { WaysToGive } from "@/components/foundation/WaysToGive";
 import { SubscribeBand } from "@/components/home/SubscribeBand";
@@ -28,16 +30,20 @@ export default function FoundationPage() {
         anchors={[
           { href: "#story", label: "Her story" },
           { href: "#journey", label: "The journey" },
+          { href: "#film", label: "The film" },
           { href: "#mission", label: "The mission" },
           { href: "#impact", label: "The impact" },
+          { href: "#gallery", label: "Gallery" },
           { href: "#give", label: "Ways to give" },
         ]}
       />
       <HerStory />
       <TheJourney />
       <AfricaQuote />
+      <FoundationFilm />
       <Mission />
       <Impact />
+      <FoundationGallery />
       <ImpactCalculator />
       <WaysToGive />
       <SubscribeBand />
