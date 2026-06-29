@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
+import { QUOTES } from "@/lib/yury";
 
 const GOLD = "#c2913b";
 
@@ -39,24 +40,38 @@ export function HerStory() {
 
             <div className="mt-10 max-w-xl space-y-7 font-display text-lg leading-[1.75] text-ink-soft">
               <p>
-                My mother, Alessandra, put the racquet in my hand before I was old
-                enough to understand what she was giving me. She did not teach me to
-                win. She taught me to show up — to a court, to a person, to a day —
-                with everything I had, and to leave it better than I found it.
+                I was born in Addis Ababa, Ethiopia, in 1976. Before I was old enough
+                to keep the names straight, my family carried me across six countries
+                — Ethiopia, Saudi Arabia, Liberia, Ivory Coast, Tanzania — each move
+                staying a step ahead of the unrest, until we finally settled in
+                Italy. My father was the largest infrastructure developer in
+                northeast Africa; he built things that were meant to last. My mother,
+                Alessandra, built something quieter and just as permanent in me.
               </p>
               <p>
-                We grew up in Ethiopia and Tanzania, far from the academies and the
-                stadiums I would later live inside. And it is there, not there, that
-                I learned who I am. Africa teaches the real, basic values of life:
-                patience, gratitude, the weight of a shared meal, the way a small
-                kindness can change a whole afternoon.
+                She is the one who first put a racquet in my hand. She did not teach
+                me to win. She taught me to show up — to a court, to a person, to a
+                day — with everything I had, and to leave it better than I found it.
+                I was seven, in Dar es Salaam, when I hit my first ball.
+              </p>
+              <p className="border-l-2 pl-6 not-italic text-ink" style={{ borderColor: GOLD }}>
+                &ldquo;{QUOTES.firstBall.text}&rdquo;
+                <span className="mt-3 block text-sm not-italic text-mute">
+                  {QUOTES.firstBall.context}
+                </span>
               </p>
               <p>
-                When she passed, the silence was the loudest thing I have ever heard.
-                For a long time I did not know what to do with it. Grief is not a
-                problem you solve. But slowly I understood that the best way to keep
-                her near was to do, for other children, the thing she had done for me
-                — to put something in their hands that no one could ever take away.
+                Africa teaches the real, basic values of life: patience, gratitude,
+                the weight of a shared meal, the way a small kindness can change a
+                whole afternoon. When my mother passed, the silence was the loudest
+                thing I have ever heard. Slowly I understood that the way to keep her
+                near was to do, for other children, the thing she had done for me — to
+                put something in their hands that no one could ever take away.
+              </p>
+              <p>
+                A boy who kept being uprooted now spends his life building a place
+                that stays put — a door that opens for the next child, and does not
+                close behind them.
               </p>
               <p className="border-l-2 pl-6 italic text-ink" style={{ borderColor: GOLD }}>
                 She gave me the game. The least I can do is give it forward.

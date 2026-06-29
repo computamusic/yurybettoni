@@ -49,8 +49,9 @@ export function AthleteHero() {
           variants={rise(0.35)}
           className="mt-7 max-w-xl text-lg leading-relaxed text-light/80"
         >
-          From the red clay of Rome to the players&apos; box of champions — the years that
-          built the method, the discipline, and the man behind everything that came next.
+          Born in Addis Ababa, raised across six countries, forged on the red clay of Rome
+          and inside the players&apos; box of champions — the years that built the method, the
+          discipline, and the man behind everything that came next.
         </motion.p>
         <motion.div
           initial="hidden"
@@ -61,7 +62,9 @@ export function AthleteHero() {
           {[
             ["#story", "The story"],
             ["#timeline", "Career timeline"],
+            ["#legends", "Shared the court"],
             ["#philosophy", "The 3 Y's"],
+            ["#off-court", "Off the court"],
           ].map(([href, label]) => (
             <a
               key={href}

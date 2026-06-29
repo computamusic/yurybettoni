@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { Pedigree } from "@/components/work/Pedigree";
 import { OfferLadder } from "@/components/work/OfferLadder";
 import { ProgramFinder } from "@/components/work/ProgramFinder";
 import { CoursesGrid } from "@/components/work/CoursesGrid";
@@ -31,6 +32,7 @@ export default function WorkPage() {
           { href: "#events", label: "Events" },
         ]}
       />
+      <Pedigree />
       <OfferLadder />
       <ProgramFinder />
       <CoursesGrid />

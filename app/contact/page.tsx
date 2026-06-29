@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { InquiryForm } from "@/components/ui/InquiryForm";
 import { Reveal } from "@/components/ui/Reveal";
+import { QUOTES } from "@/lib/yury";
 
 export const metadata: Metadata = {
   title: "Contact — Yury Bettoni",
@@ -43,6 +44,9 @@ export default function ContactPage() {
             <div>
               <p className="eyebrow text-mute">Based in</p>
               <p className="mt-1 text-ink">Miami Beach, Florida</p>
+              <p className="mt-1 text-sm leading-relaxed text-mute">
+                Home base between courts, clients and the road.
+              </p>
             </div>
             <div>
               <p className="eyebrow text-mute">Follow</p>
@@ -53,6 +57,15 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
+
+          <blockquote className="mt-12 border-t border-line pt-8">
+            <p className="max-w-sm font-display text-lg font-medium leading-snug tracking-[-0.01em] text-ink">
+              &ldquo;{QUOTES.whyTennis.text}&rdquo;
+            </p>
+            <footer className="mt-4 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-mute">
+              — {QUOTES.whyTennis.attribution}
+            </footer>
+          </blockquote>
         </Reveal>
 
         <Reveal delay={0.1}>

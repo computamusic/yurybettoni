@@ -7,9 +7,12 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 const MEDIA = [
   { img: "/images/archive-federer.jpg", cap: "With fellow players, late ’90s", span: "md:col-span-2 md:row-span-2", ratio: "aspect-[3/2]" },
+  { img: "/images/archive-volkl.jpg", cap: "Völkl Tennis — sponsored athlete", span: "", ratio: "aspect-[4/5]" },
   { img: "/images/hero-3.jpg", cap: "Miami Open", span: "", ratio: "aspect-[4/5]" },
+  { img: "/images/archive-academy.jpg", cap: "Bollettieri Academy, Florida", span: "md:col-span-2", ratio: "aspect-[3/2]" },
   { img: "/images/legacy-africa.jpg", cap: "Africa, from the archive", span: "", ratio: "aspect-[4/5]" },
   { img: "/images/about-yury.jpg", cap: "Forehand, Miami", span: "", ratio: "aspect-[4/5]" },
+  { img: "/images/archive-indianwells.jpg", cap: "BNP Paribas Open, Indian Wells", span: "md:col-span-2", ratio: "aspect-[3/2]" },
   { img: "/images/hero-2.jpg", cap: "On the clay, Rome", span: "", ratio: "aspect-[4/5]" },
 ];
 

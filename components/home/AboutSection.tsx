@@ -27,13 +27,12 @@ export function AboutSection() {
             The athlete who became an architect.
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft">
-            Yury is a former Italian-American professional tennis player who leverages his
-            background in sport and business to give back with purpose through his
-            foundation. Born in Africa, he lived across several countries before arriving in
-            the United States to train at the renowned Nick Bollettieri Academy. After
-            competing professionally and coaching top-ranked players, he graduated from the
-            University of South Florida and built a career in business — including a
-            partnership at Italkraft, the luxury kitchen brand known for craftsmanship.
+            Born in Addis Ababa and carried across six countries before Italy, Yury turned a
+            first ball struck clean off the strings into a life on tour. He trained at the
+            Nick Bollettieri Academy, hit with champions, and coached at the highest level —
+            then built a second life off the court, from a partnership at the luxury kitchen
+            house Italkraft to the Alessandra Bettoni Foundation, founded in his mother&apos;s
+            name. An athlete who became an architect — of homes, of method, of purpose.
           </p>
           <div className="mt-9">
             <ForwardLink href="/athlete#story">Learn more</ForwardLink>

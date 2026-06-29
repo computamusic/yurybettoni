@@ -1,13 +1,5 @@
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
-
-const EVENTS = [
-  { year: "1992", title: "Bollettieri Academy", note: "Arrives in Florida to train at the Nick Bollettieri Academy — the proving ground for champions." },
-  { year: "1997", title: "Italian Open, Rome", note: "Hitting partner to Mary Pierce on her run to the Italian Open title.", marker: true },
-  { year: "Late ’90s", title: "Inside the game", note: "Works alongside top-ranked players including Jeff Tarango and Arantxa Sánchez Vicario." },
-  { year: "2005", title: "University of South Florida", note: "Graduates with degrees in International Management and Economics." },
-  { year: "Certified", title: "USPTR · ISSA", note: "Professional coaching certification (USPTR) and training & nutrition certification (ISSA)." },
-  { year: "Today", title: "The Y-System · the Foundation", note: "Develops his training method and founds the Alessandra Bettoni Foundation.", marker: true },
-];
+import { TIMELINE } from "@/lib/yury";
 
 export function CareerTimeline() {
   return (
@@ -24,8 +16,8 @@ export function CareerTimeline() {
         </Reveal>
 
         <RevealGroup className="mt-16 border-t border-line">
-          {EVENTS.map((e) => (
-            <RevealItem key={e.year}>
+          {TIMELINE.map((e) => (
+            <RevealItem key={e.year + e.title}>
               <div className="group grid grid-cols-1 gap-2 border-b border-line py-7 transition-colors hover:bg-bone md:grid-cols-[10rem_1fr] md:gap-8 md:py-8">
                 <div className="flex items-center gap-3">
                   <span

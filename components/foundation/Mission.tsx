@@ -88,10 +88,10 @@ export function Mission() {
               Charity that depends on a good month is fragile. This doesn&apos;t.
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-light/75">
-              Yury&apos;s ventures are built to carry the mission, not the other way
-              around. A committed share of what they earn funds the programs — so
-              giving here is steady, transparent, and sustainable, rather than
-              dependent on any single campaign.
+              Yury&apos;s ventures exist to carry the mission, not the reverse. A
+              committed share of what each one earns is routed to the programs —
+              steady, transparent, and renewing season after season, rather than
+              riding on a single campaign or a single good year.
             </p>
           </Reveal>
 

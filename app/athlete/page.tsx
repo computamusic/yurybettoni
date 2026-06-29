@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { AthleteHero } from "@/components/athlete/AthleteHero";
 import { StorySequence } from "@/components/athlete/StorySequence";
 import { CareerTimeline } from "@/components/athlete/CareerTimeline";
+import { SharedCourt } from "@/components/athlete/SharedCourt";
+import { FullCircleQuote } from "@/components/athlete/FullCircleQuote";
 import { AthletePhilosophy } from "@/components/athlete/AthletePhilosophy";
+import { OffCourt } from "@/components/athlete/OffCourt";
 import { MediaGrid } from "@/components/athlete/MediaGrid";
 import { AthleteHandoff } from "@/components/athlete/AthleteHandoff";
 import { SubscribeBand } from "@/components/home/SubscribeBand";
@@ -19,7 +22,10 @@ export default function AthletePage() {
       <AthleteHero />
       <StorySequence />
       <CareerTimeline />
+      <SharedCourt />
+      <FullCircleQuote />
       <AthletePhilosophy />
+      <OffCourt />
       <MediaGrid />
       <AthleteHandoff />
       <SubscribeBand />

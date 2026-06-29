@@ -1,34 +1,46 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 
+import { QUOTES } from "@/lib/yury";
+
 const CHAPTERS = [
   {
     n: "01",
     title: "Africa",
     img: "/images/legacy-africa.jpg",
     alt: "The Bettoni family in Africa",
-    body: "Born in Africa to Italian parents who built things meant to last, he learned early that home is something you carry, not somewhere you stay. It was his mother, Alessandra, who first put a racquet in his hand — and a standard in his head.",
+    body: "Born in Addis Ababa in 1976 to Italian parents, he spent a childhood carried across six countries — Ethiopia, Saudi Arabia, Liberia, Ivory Coast, Tanzania — before Italy. He learned early that home is something you carry, not somewhere you stay. It was his mother, Alessandra, who set the standard he would chase for life.",
+    quote: QUOTES.africa.text,
   },
   {
     n: "02",
-    title: "Bollettieri",
+    title: "The first ball",
     img: "/images/hero-1.jpg",
-    alt: "Yury Bettoni on a hard court",
-    body: "A one-way ticket to Florida and the most demanding tennis academy in the world. At the Nick Bollettieri Academy, the courts didn't care where you came from — only how you competed. He competed.",
+    alt: "Yury Bettoni on court",
+    body: "Age seven, in Dar es Salaam, he saw a tennis court for the first time. At thirteen a school teacher pushed a reluctant boy onto the court — and that same week he reached the final of both his school event and the Italian National Mini championship. Alessandra told him to take it seriously. He did.",
+    quote: QUOTES.firstBall.text,
   },
   {
     n: "03",
-    title: "Among champions",
-    img: "/images/archive-champions.jpg",
-    alt: "Yury Bettoni alongside champions in the late nineties",
-    body: "Hitting partner to Mary Pierce for her 1997 Italian Open title in Rome. In the corner of Jeff Tarango and Arantxa Sánchez Vicario. He spent his twenties beside the very best in the game, learning what separates good from great.",
+    title: "Bollettieri",
+    img: "/images/archive-academy.jpg",
+    alt: "The Nick Bollettieri Academy in Florida",
+    body: "A one-way ticket to Florida and the most demanding tennis academy in the world. At the Nick Bollettieri Academy he trained in the same ranks as Marcelo Ríos, Marat Safin and Max Mirnyi. The courts didn't care where you came from — only how you competed. He competed.",
   },
   {
     n: "04",
+    title: "Among champions",
+    img: "/images/archive-champions.jpg",
+    alt: "Yury Bettoni alongside champions in the late nineties",
+    body: "Hitting partner to Mary Pierce on her run to the 1997 Italian Open title — back on the very Rome court he had once watched from the stands, dreaming of Agassi. The next year, Switzerland: training beside a young Roger Federer at the Swiss Tennis Federation, as assistant to super-coach Sven Groeneveld.",
+    quote: QUOTES.fullCircle.text,
+  },
+  {
+    n: "05",
     title: "The architect",
     img: "/images/about-yury.jpg",
     alt: "Yury Bettoni striking a forehand",
-    body: "A degree from the University of South Florida. Certifications as a coach and a trainer. A partnership at Italkraft, the luxury kitchen house. The same discipline, pointed at a bigger life — and at a foundation that carries his mother's name forward.",
+    body: "A degree from the University of South Florida in International Management and Economics. Certifications from the USPTR and ISSA. A partnership at the luxury kitchen house Italkraft, on projects from Zaha Hadid's One Thousand Museum to the St. Regis. The same discipline, pointed at a bigger life — and at a foundation that carries his mother's name forward.",
   },
 ];
 
@@ -42,7 +54,7 @@ export function StorySequence() {
             className="mt-5 font-display font-medium leading-[1.05] tracking-[-0.015em] text-ink"
             style={{ fontSize: "var(--text-display)" }}
           >
-            Four chapters, one through-line: discipline.
+            Five chapters, one through-line: discipline.
           </h2>
         </Reveal>
 
@@ -74,6 +86,13 @@ export function StorySequence() {
                   <p className="mt-6 max-w-md text-base leading-relaxed text-ink-soft">
                     {c.body}
                   </p>
+                  {c.quote && (
+                    <blockquote className="mt-7 max-w-md border-l-2 border-clay pl-5">
+                      <p className="font-display text-lg italic leading-snug text-ink md:text-xl">
+                        &ldquo;{c.quote}&rdquo;
+                      </p>
+                    </blockquote>
+                  )}
                 </div>
               </div>
             </Reveal>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Reveal } from "@/components/ui/Reveal";
 import { SubscribeBand } from "@/components/home/SubscribeBand";
 import { ProductGrid } from "@/components/shop/ProductGrid";
+import { BrandStory } from "@/components/shop/BrandStory";
 import { CauseBand } from "@/components/shop/CauseBand";
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ export default function ShopPage() {
         </div>
       </section>
 
+      <BrandStory />
       <ProductGrid />
       <CauseBand />
       <SubscribeBand />
